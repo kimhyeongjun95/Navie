@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # 로컬 앱
     'accounts',
     'reviews',
+    'movies',
     # 라이브러리
     'django_extensions',
     'django.contrib.admin',
