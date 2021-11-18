@@ -6,5 +6,4 @@ app_name = 'reviews'
 
 urlpatterns = [
     # path(''),
-    # path(''),
 ]
