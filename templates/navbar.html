@@ -38,8 +38,12 @@
     <a href="{% url 'accounts:login' %}">로그인</a>
   </div>
 
-  {% comment %} <form action="{% url 'accounts:login' %}" method="POST">
+  <form action="{% url 'accounts:logout' %}" method="POST">
     {% csrf_token %}
     <button>로그아웃</button>
-  </form> {% endcomment %}
+  </form>
+
+{% if request.user.is_authenticated %}
+  <a href="{% url 'accounts:profile' request.user.pk %}">프로필</a>
+{% endif %}
 </nav>

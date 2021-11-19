@@ -1,4 +1,4 @@
-{% comment %} {% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 <form action="{% url 'accounts:login' %}" method="POST">
@@ -7,4 +7,4 @@
   <button>로그인</button>
 </form>
 <a href="{% url 'accounts:search_info' %}">아이디/비밀번호 찾기</a>
-{% endblock content %} {% endcomment %}
+{% endblock content %}

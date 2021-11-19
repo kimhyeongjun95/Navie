@@ -75,7 +75,7 @@ class CustomUserChangeForm(UserChangeForm):
     
 
 class SearchIdForm(forms.Form):
-    name = forms.CharField(
+    name_id = forms.CharField(
         label=_(''),
         widget=forms.TextInput(attrs={
             'class': 'accounts-search_id-name',
@@ -83,7 +83,7 @@ class SearchIdForm(forms.Form):
         })
     )
 
-    email = forms.CharField(
+    email_id = forms.CharField(
         label=_(''),
         widget=forms.TextInput(attrs={
             'class': 'accounts-search_id-email',
@@ -92,7 +92,7 @@ class SearchIdForm(forms.Form):
     )
 
 class SearchPasswordForm(forms.Form):
-    username = forms.CharField(
+    username_password = forms.CharField(
         label=_(''),
         widget=forms.TextInput(attrs={
             'class': 'accounts-search_password-id',
@@ -100,7 +100,7 @@ class SearchPasswordForm(forms.Form):
         })
     )
 
-    name = forms.CharField(
+    name_password = forms.CharField(
         label=_(''),
         widget=forms.TextInput(attrs={
             'class': 'accounts-search_password-name',
@@ -108,7 +108,7 @@ class SearchPasswordForm(forms.Form):
         })
     )
 
-    email = forms.CharField(
+    email_password = forms.CharField(
         label=_(''),
         widget=forms.TextInput(attrs={
             'class': 'accounts-search_password-email',
