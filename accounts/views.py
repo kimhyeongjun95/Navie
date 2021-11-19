@@ -86,7 +86,6 @@ def logout(request):
 #         auth_logout(request)
 #     return redirect('articles:index')
 
-
 # @login_required
 # @require_http_methods(['GET', 'POST'])
 # def change_password(request):
