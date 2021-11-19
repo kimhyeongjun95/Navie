@@ -10,55 +10,50 @@ username_validator = UnicodeUsernameValidator()
 
 class SignUpForm(UserCreationForm):
     name = forms.CharField(
-        label=_(''),
+        label='이름',
         max_length=20,
         min_length=1,
         required=True,
         widget=forms.TextInput(attrs={
-            'class': 'accounts-name',
-            'placeholder': '이름을 입력해주세요.'
+            'class': 'accounts-name input_area',
             })
     )
 
     username = forms.CharField(
-        label=_(''),
+        label='아이디',
         max_length=30,
         help_text=_(''), # 30자 이내 문자, 숫자, 특수문자(@ . + -)만 가능
         validators=[username_validator],
         error_messages={'unique': _("이미 존재하는 아이디입니다.")},
         widget=forms.TextInput(attrs={
-            'class': 'accounts-id',
-            'placeholder': '사용할 아이디를 입력해주세요.'
+            'class': 'accounts-id input_area',
             })
     )
 
     password1 = forms.CharField(
-        label=_(''),
+        label='비밀번호',
         widget=forms.PasswordInput(attrs={
-            'class': 'accounts-password',
-            'placeholder': '사용할 비밀번호를 입력해주세요.'
+            'class': 'accounts-password input_area',
             }),
         error_messages={'invalid': _("최소 8자 이상의 문자와 숫자로 이루어진 비밀번호를 입력해주세요.")},
         # help_text=password_validation.password_validators_help_text_html()
     )
 
     password2 = forms.CharField(
-        label=_(''),
+        label='비밀번호 확인',
         widget=forms.PasswordInput(
             attrs={
-                'class': 'accounts-passwordconfirm',
-                'placeholder': '비밀번호 확인'
+                'class': 'accounts-passwordconfirm input_area',
                 }),
         help_text=_('')
     )
 
     email = forms.EmailField(
-        label=_(''),
+        label='이메일',
         max_length=50,
         help_text=_(''),
         widget=forms.TextInput(attrs={
-            'class': 'accounts-email',
-            'placeholder': '이메일을 입력해주세요.',
+            'class': 'accounts-email input_area',
             })
     )
 
