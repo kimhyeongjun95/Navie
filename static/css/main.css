@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0D0C0C;
+  font-family: 'Jua', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #11f3a2;
+  padding: 8px 12px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.navbar_home a {
+  color: #11f3a2;
+  font-size: 24px;
+  margin-left: 14px;
+}
+
+/* hover용 */
+/* .navbar_home a:hover,
+.navbar_lifemovie a:hover {
+  border-radius: 4px;
+  transition;
+} */
+
+/* 검색창 */
+.navbar_search {
+  border-color: white;
+  border: 1px solid white;
+  border-radius: 6px;
+  width: 240px;
+
+  background-color: #0D0C0C;
+  color: white;
+  text-align: center;
+  
+}
+ 
+/* 돋보기 버튼 */
+.navbar_searchbutton {
+  color: white;
+  background-color: #0D0C0C;
+  border: none;
+}
+
+/* 인생영화 */
+.navbar_lifemovie a {
+  color: #11f3a2;
+  font-size: 24px;
+}
+
+/* 프로필 */
+.navbar_profile {
+  display:flex;
+  justify-content: end;
+  color: white;
+  margin-right: 10px;
+}
+
+/* 로그인 */
+.navbar_login a {
+  color: #11f3a2;
+  font-size: 24px;
+  margin-right: 20px;
+}
