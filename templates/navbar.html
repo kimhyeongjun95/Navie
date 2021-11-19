@@ -38,3 +38,85 @@
     <a href="">로그인</a>
   </div>
 </nav>
+
+<style>
+  .login {
+   color: white;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   position: relative;
+  }
+
+  .login h3{
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .login_area {
+    width:400px;
+    position: relative;
+    margin-top: 20px;
+  }
+  .login_area:first-child {margin-top: 0;}
+  .login_area input{
+    width:100%;
+    padding: 20px 10px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size: 18px; color:#fff;
+    outline: none;
+  }
+  .login_area label {
+    position: absolute;
+    left: 10px; top: 15px;
+    font-size: 18px;
+    color: #999;
+    transition: all .5s ease;
+  }
+  .login_area input:focus + label,
+  .login_area input:valid + label {
+    top: -2px;
+    font-size: 13;color: #11f3a2;
+  }
+
+  .login_btn {
+    margin-top: 30px;
+  }
+  .login_btn button {
+    width:100%; height: 50px;
+    background: #11f3a2;
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+  }
+
+</style>
+
+<!-- 로그인 -->
+<div class="login">
+  <h3>Navie</h3>
+  <form action="">
+    <div class="login_area">
+      <input type="text" name="id" class="id" required>
+      <label for="id">아이디</label>
+    </div>
+    <div class="login_area">
+      <input type="password" name="pw" class="pw" required>
+      <label for="pw">비밀번호</label>
+    </div>
+    <div class="login_btn">
+      <button type="submit">로그인</button>
+    </div>
+
+    <div class="login_signup">
+      <a href="">회원가입</a>
+    </div>
+    <div class="login_finder">
+      <a href="">아이디 / 비밀번호 찾기</a>
+    </div>
+  </form>
+</div>
