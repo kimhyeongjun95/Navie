@@ -3,7 +3,7 @@
 <nav>
   <!-- 홈 링크 -->
   <div class="navbar_home">
-    <a href="" class="navbar_homebutton">Navie</a>
+    <a href="{% url 'movies:index' %}" class="navbar_homebutton">Navie</a>
   </div>
 
   <!-- 검색창 -->
@@ -20,109 +20,36 @@
     </form>
   </div>
 
-  <!-- 인생영화 추천 -->
-  <div class="navbar_lifemovie">
-    <a href="">인생영화 추천</a>
-  </div>
+  <!-- 로그인 상태 -->
+  {% if request.user.is_authenticated %}
 
+    <!-- 인생영화 추천 -->
+    <div class="navbar_lifemovie">
+      <a href="">인생영화 추천</a>
+    </div>
+
+    <form action="{% url 'accounts:logout' %}" method="POST">
+      {% csrf_token %}
+      <button>로그아웃</button>
+    </form>
+  
   <!-- 프로필 -->
-  <!-- <div class="navbar_profile">
+  <div class="navbar_profile">
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
       <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
       <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
     </svg>
-  </div> -->
-
-  <!-- 로그인 -->
-  <div class="navbar_login">
-    <a href="{% url 'accounts:login' %}">로그인</a>
   </div>
-</nav>
 
-<style>
-  .login {
-   color: white;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 100vh;
-   position: relative;
-  }
+  <!-- 비로그인 상태 -->
+  {% else %}
 
-  .login h3{
-    font-size: 24px;
-    color: #fff;
-    text-align: center;
-  }
-
-  .login_area {
-    width:400px;
-    position: relative;
-    margin-top: 20px;
-  }
-  .login_area:first-child {margin-top: 0;}
-  .login_area input{
-    width:100%;
-    padding: 20px 10px 10px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #999;
-    font-size: 18px; color:#fff;
-    outline: none;
-  }
-  .login_area label {
-    position: absolute;
-    left: 10px; top: 15px;
-    font-size: 18px;
-    color: #999;
-    transition: all .5s ease;
-  }
-  .login_area input:focus + label,
-  .login_area input:valid + label {
-    top: -2px;
-    font-size: 13;color: #11f3a2;
-  }
-
-  .login_btn {
-    margin-top: 30px;
-  }
-  .login_btn button {
-    width:100%; height: 50px;
-    background: #11f3a2;
-    font-size: 20px;
-    border: none;
-    border-radius: 25px;
-  }
-
-</style>
-
-<!-- 로그인 -->
-<div class="login">
-  <h3>Navie</h3>
-  <form action="">
-    <div class="login_area">
-      <input type="text" name="id" class="id" required>
-      <label for="id">아이디</label>
-    </div>
-    <div class="login_area">
-      <input type="password" name="pw" class="pw" required>
-      <label for="pw">비밀번호</label>
-    </div>
-    <div class="login_btn">
-      <button type="submit">로그인</button>
+    <!-- 로그인 -->
+    <div class="navbar_login">
+      <a href="{% url 'accounts:login' %}">로그인</a>
     </div>
 
-    <div class="login_signup">
-      <a href="">회원가입</a>
-    </div>
-    <div class="login_finder">
-      <a href="">아이디 / 비밀번호 찾기</a>
-    </div>
-  </form>
-</div>
+  {% endif %}
 
-  {% comment %} <form action="{% url 'accounts:login' %}" method="POST">
-    {% csrf_token %}
-    <button>로그아웃</button>
-  </form> {% endcomment %}
+
 </nav>
