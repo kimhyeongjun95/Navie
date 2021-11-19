@@ -11,4 +11,4 @@ class User(AbstractUser):
     recommend_movies = models.ManyToManyField(Movie, related_name='recommend_users')
 
     def __str__(self):
-        return self.user_id
+        return self.username

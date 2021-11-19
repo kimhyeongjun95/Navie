@@ -38,12 +38,8 @@ def login(request):
         if login_form.is_valid():
             auth_login(request, login_form.get_user())
             return redirect(request.GET.get('next') or 'movies:index')
-    else:
-        login_form = AuthenticationForm()
-    context = {
-        'login_form': login_form,
-    }
-    return render(request, 'accounts/login.html', context)
+    
+    return render(request, 'accounts/login.html')
 
 
 @require_POST
