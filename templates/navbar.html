@@ -35,7 +35,7 @@
 
   <!-- 로그인 -->
   <div class="navbar_login">
-    <a href="">로그인</a>
+    <a href="{% url 'accounts:login' %}">로그인</a>
   </div>
 </nav>
 
@@ -120,3 +120,9 @@
     </div>
   </form>
 </div>
+
+  {% comment %} <form action="{% url 'accounts:login' %}" method="POST">
+    {% csrf_token %}
+    <button>로그아웃</button>
+  </form> {% endcomment %}
+</nav>

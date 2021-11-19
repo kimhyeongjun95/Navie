@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from accounts.forms import CustomUserChangeForm, CustomUserCreationForm
+from accounts.forms import SignUpForm, SearchIdForm, SearchPasswordForm, CustomUserChangeForm
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import login as auth_login, update_session_auth_hash
 from django.contrib.auth import logout as auth_logout
@@ -8,50 +8,60 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-# @require_http_methods(['GET', 'POST'])
-# def signup(request):
+@require_http_methods(['GET', 'POST'])
+def signup(request):
+    if request.user.is_authenticated:
+        return redirect('movies:index')
+    
+    if request.method == 'POST':
+        signup_form = SignUpForm(request.POST)
+        if signup_form.is_valid():
+            user = signup_form.save()
+            auth_login(request, user)
+            return redirect('movies:index')
+    else:
+        signup_form = SignUpForm()
+    context = {
+        'signup_form':signup_form,
+    }
+    return render(request, 'accounts/signup.html', context)
+
+
+
+@require_http_methods(['GET', 'POST'])
+def login(request):
+    if request.user.is_authenticated:
+        return redirect('movies:index')
+    
+    if request.method == 'POST':
+        login_form = AuthenticationForm(request, request.POST)
+        if login_form.is_valid():
+            auth_login(request, login_form.get_user())
+            return redirect(request.GET.get('next') or 'movies:index')
+    else:
+        login_form = AuthenticationForm()
+    context = {
+        'login_form': login_form,
+    }
+    return render(request, 'accounts/login.html', context)
+
+
+@require_POST
+def logout(request):
+    if request.user.is_authenticated:
+        auth_logout(request)
+    return redirect('movies:index')
+
+
+# def search_info(request):
 #     if request.user.is_authenticated:
 #         return redirect('movies:index')
     
-#     if request.method == 'POST':
-#         form = CustomUserCreationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             auth_login(request, user)
-#             return redirect('movies:index')
-#     else:
-#         form = CustomUserCreationForm()
-#     context = {
-#         'form':form,
-#     }
-#     return render(request, 'accounts/signup.html', context)
-
-
-
-# @require_http_methods(['GET', 'POST'])
-# def login(request):
-#     if request.user.is_authenticated:
-#         return redirect('articles:index')
-    
-#     if request.method == 'POST':
-#         form = AuthenticationForm(request, request.POST)
-#         if form.is_valid():
-#             auth_login(request, form.get_user())
-#             return redirect(request.GET.get('next') or 'movies:index')
-#     else:
-#         form = AuthenticationForm()
-#     context = {
-#         'form':form,
-#     }
-#     return render(request, 'accounts/login.html', context)
-
-
-# @require_POST
-# def logout(request):
-#     if request.user.is_authenticated:
-#         auth_logout(request)
-#     return redirect('articles:index')
-
+#     if request.method == 'GET':
+#         search_id_form = SearchIdForm(request.GET)
+#         search_password_form = SearchPasswordForm(request.GET)
+#         if search_id_form.is_valid() and search_id_form.name
+#     return render(request, 'accounts/search_info.html')
 
 # @login_required
 # @require_http_methods(['GET', 'POST'])
@@ -75,7 +85,6 @@ from django.contrib.auth.decorators import login_required
 #         request.user.delete()
 #         auth_logout(request)
 #     return redirect('articles:index')
-
 
 # @login_required
 # @require_http_methods(['GET', 'POST'])
