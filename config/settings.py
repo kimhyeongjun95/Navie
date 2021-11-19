@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'movies',
     # 라이브러리
     'django_extensions',
+    'imagekit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
