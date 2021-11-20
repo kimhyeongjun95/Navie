@@ -1,5 +1,5 @@
 from django import forms
-from reviews.models import Review
+from reviews.models import Review, Comment
 
 
 class ReviewForm(forms.ModelForm):
@@ -37,4 +37,14 @@ class ReviewForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-    pass
+    content = forms.CharField(
+        label='댓글',
+        min_length=1,
+        widget=forms.TextInput(attrs={
+            'class': 'review-comment input_area',
+            })
+    )
+
+    class Meta:
+        model = Comment
+        fields = ('content',)
