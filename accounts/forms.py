@@ -16,6 +16,7 @@ class SignUpForm(UserCreationForm):
         required=True,
         widget=forms.TextInput(attrs={
             'class': 'accounts-name input_area',
+            'autofocus': True,
             })
     )
 
@@ -27,6 +28,7 @@ class SignUpForm(UserCreationForm):
         error_messages={'unique': _("이미 존재하는 아이디입니다.")},
         widget=forms.TextInput(attrs={
             'class': 'accounts-id input_area',
+            'autofocus': False,
             })
     )
 

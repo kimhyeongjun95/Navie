@@ -29,7 +29,15 @@ section {
    border-bottom: 1px solid #999;
    font-size: 18px; color:#fff;
    outline: none;
- }
+   
+   /* background-color: rgb(232, 240, 254) !important;
+    background-image: none !important;
+    color: -internal-light-dark(black, white) !important; */
+}
+/* .login_area input:-webkit-autofill {
+  -webkit-box-shaodw: 0 0 0 1000px black inset;
+} */
+
  .login_area label {
    position: absolute;
    left: 10px; top: 15px;

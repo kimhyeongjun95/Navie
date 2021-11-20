@@ -102,5 +102,5 @@ def scrap_movie_list():
 
         
 
-# scrap_genre_list()
+scrap_genre_list()
 scrap_movie_list()

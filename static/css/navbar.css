@@ -72,3 +72,11 @@ nav {
   font-size: 24px;
   margin-right: 20px;
 }
+
+.navbar_logout {
+  display: none;
+}
+
+.navbar_logout.active {
+  display: flex;
+}
