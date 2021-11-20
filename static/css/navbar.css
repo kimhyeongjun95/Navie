@@ -98,17 +98,19 @@ nav {
   list-style:none;
 }
 
-.navbar_dropdown_content:hover {
-  background-color: tomato;
+.navbar_dropdown_content .navbar_dropdown_content_element:hover {
+  background-color: #303255;
 }
 
-.navbar_dropdown_content button,
-.navbar_dropdown_content a {
+.navbar_dropdown_content .navbar_logout,
+.navbar_dropdown_content .navbar_myprofile {
   padding: 8px 12px;
   text-decoration: none;
   color: #11f3a2;
-  background-color: transparent;
-  left: 50%;
-  top: 50%;
-  border: none;
 } 
+
+.navbar_dropdown_content .navbar_dropdown_content_element button {
+  border: none;
+  background-color: transparent;
+  color: #11f3a2;
+}
