@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/static/css/main.css">
+{% load static %}
 
 <nav>
   <!-- 홈 링크 -->
@@ -8,10 +9,10 @@
 
   <!-- 검색창 -->
   <div>
-    <form action="">
+    <form action="{% url 'movies:search' %}" method="GET">
       <div>
-        <input class="navbar_search" type="text" name="" placeholder="영화 제목을 입력해주세요">
-        <button class="navbar_searchbutton">
+        <input class="navbar_search" type="text" name="word" placeholder="검색어를 입력해주세요">
+        <button type="submit" class="navbar_searchbutton">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
           <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
           </svg>
@@ -31,6 +32,9 @@
     <form action="{% url 'accounts:logout' %}" method="POST">
       {% csrf_token %}
       <button>로그아웃</button>
+    
+    <a href="{% url 'accounts:profile' request.user.username %}">프로필</a>
+    
     </form>
   
   <!-- 프로필 -->
@@ -50,6 +54,5 @@
     </div>
 
   {% endif %}
-
 
 </nav>

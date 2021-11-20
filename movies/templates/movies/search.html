@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% comment %} 영화 검색 리스트 {% endcomment %}
+  <div>
+    {% for movie in movies%}
+      {{ movie.title }}
+    {% endfor %}
+  </div>
+
+  {% comment %} 리뷰 검색 리스트 {% endcomment %}
+  <div>
+    {% for review in reviews %}
+      {{ review.title }}
+    {% endfor %}
+  </div>
+
+  {% comment %} 장르 검색 리스트 {% endcomment %}
+  <div>
+    {% for movie in genres.movies.all %}
+      {{ movie.title }}
+    {% endfor %}
+  </div>
+  
+  {% comment %} 배우 검색 리스트 {% endcomment %}
+  <div>
+    {% for movie in actors.movies.all %}
+      {{ movie.title }}
+    {% endfor %}
+  </div>
+
+  {% comment %} 감독 검색 리스트 {% endcomment %}
+  <div>
+    {% for movie in directors.movies.all %}
+      {{ movie.title }}
+    {% endfor %}
+  </div>
+
+  {% comment %} 키워드 검색 리스트 {% endcomment %}
+  <div>
+    {% for movie in keywords.movies.all %}
+      {{ movie.title }}
+    {% endfor %}
+  </div>
+
+{% endblock %}
