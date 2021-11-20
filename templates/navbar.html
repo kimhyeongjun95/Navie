@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="/static/css/navbar.css">
 <script src="/static/js/navbar.js" defer></script>
 
@@ -40,25 +41,27 @@
           <img src="/static/img/default.png" alt="">
         {% endif %}
       </a>
-      
+
       <div class="navbar_dropdown_content">
-        <!-- 프로필  -->
-        <div class="navbar_myprofile">
-          <a href="{% url 'accounts:profile' request.user.username %}">프로필</a>
+        <div class="navbar_dropdown_content_element">
+          <!-- 프로필  -->
+          <div class="navbar_myprofile">
+            <a href="{% url 'accounts:profile' request.user.username %}">프로필</a>
+          </div>
         </div>
 
-        <!-- 로그아웃 -->
-        <div class="navbar_logout">
-          <form action="{% url 'accounts:logout' %}" method="POST">
-            {% csrf_token %}
-            <button>로그아웃</button>
-          </form>
-        </div>   
+        <div class="navbar_dropdown_content_element">
+          <!-- 로그아웃 -->
+          <div class="navbar_logout">
+            <form action="{% url 'accounts:logout' %}" method="POST">
+              {% csrf_token %}
+              <button>로그아웃</button>
+            </form>
+          </div>   
+        </div>
+
       </div>
-
     </div>
-
-  
 
   <!-- 비로그인 상태 -->
   {% else %}
@@ -70,3 +73,10 @@
   {% endif %}
 
 </nav>
+
+{% comment %} 
+
+추가 구현사항
+1. hover 테두리에 맞게 깜빡이게 하기(radius 조정)
+
+{% endcomment %}
