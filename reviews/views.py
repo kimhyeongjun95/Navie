@@ -3,7 +3,7 @@ from django.views.decorators.http import require_safe, require_http_methods, req
 from django.contrib.auth.decorators import login_required
 from .models import Review, Comment
 from movies.models import Movie
-from .forms import ReviewForm
+from .forms import ReviewForm, CommentForm
 
 
 # Create your views here.
@@ -28,15 +28,17 @@ def create_review(request, movie_pk):
     return render(request, 'reviews/create_review.html', context)
 
 
-
 @require_safe
 def detail_review(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
+    comment_form = CommentForm()
+    comments = review.comment_set.all()
     context = {
         'review': review,
+        'comment_form': comment_form,
+        'comments': comments,
     }
     return render(request, 'reviews/detail_review.html', context)
-
 
 
 @login_required
@@ -68,9 +70,23 @@ def delete_review(request, review_pk):
 @login_required
 @require_http_methods(['GET', 'POST'])
 def create_comment(request, review_pk):
-    pass
+    if request.user.is_authenticated:
+        review = get_object_or_404(Review, pk=review_pk)
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.user = request.user
+            comment.review = review
+            comment.save()
+            return redirect('reviews:detail_review', review.pk)
+    return redirect('accounts:login')
 
 
 @require_POST
 def delete_comment(request, review_pk, comment_pk):
-    pass
+    review = get_object_or_404(Review, pk=review_pk)
+    if request.user.is_authenticated:
+        comment = get_object_or_404(Comment, pk=comment_pk)
+        if comment.user == request.user:
+            comment.delete()
+    return redirect('reviews:detail_review', review.pk)

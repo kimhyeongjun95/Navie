@@ -9,4 +9,22 @@
     {% csrf_token %}
     <button>삭제</button>
   </form>
+
+  {% comment %} 댓글입력 {% endcomment %}
+  <form action="{% url 'reviews:create_comment' review.pk %}" method="POST">
+    {% csrf_token %}
+    {{ comment_form }}
+    <button>작성</button>
+  </form>
+
+  {% comment %} 댓글목록 {% endcomment %}
+  <div>
+    {% for comment in comments %}
+      {{ comment.user }} - {{ comment.content }}
+      <form action="{% url 'reviews:delete_comment' review.pk comment.pk %}" method="POST">
+        {% csrf_token %}
+        <button>삭제</button>
+      </form>
+    {% endfor %}
+  </div>
 {% endblock %}
