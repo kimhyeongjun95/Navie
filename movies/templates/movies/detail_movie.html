@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/{{ youtube_key }}"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    >
+    </iframe>
+
+   <a href="{% url 'reviews:create_review' movie.pk %}">리뷰 작성</a>
+   
+   {% comment %} 해당 영화 리뷰 {% endcomment %}
+   <div>
+      {% for review in movie.review_set.all %}
+         <a href="{% url 'reviews:detail_review' review.pk %}">{{ review.title }}</a>
+      {% endfor %}
+   </div>
+{% endblock %}

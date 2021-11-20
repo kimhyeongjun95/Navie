@@ -115,6 +115,7 @@ def profile(request, user_username):
     return render(request, 'accounts/profile.html', context)
 
 
+@login_required
 @require_http_methods(['GET', 'POST'])
 def change_personal_info(request, user_pk):
     user = get_object_or_404(get_user_model(), pk=user_pk)
