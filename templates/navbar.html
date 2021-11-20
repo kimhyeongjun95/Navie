@@ -28,29 +28,37 @@
     <div class="navbar_lifemovie">
       <a href="">인생영화 추천</a>
     </div>
+    
 
-    <!-- 로그아웃 -->
-    <div class="navbar_logout">
-      <form action="{% url 'accounts:logout' %}" method="POST">
-        {% csrf_token %}
-        <button>로그아웃</button>
-      </form>
+    <!-- 프로필 이미지 안에있는 -->
+    <div class="navbar_dropdown">
+      <!-- 프로필 이미지 -->
+      <a href="#" class="navbar_profile_image">
+        {% if user.image %}
+          <img src="#" alt="">
+        {% else %}
+          <img src="/static/img/default.png" alt="">
+        {% endif %}
+      </a>
+      
+      <div class="navbar_dropdown_content">
+        <!-- 프로필  -->
+        <div class="navbar_myprofile">
+          <a href="{% url 'accounts:profile' request.user.username %}">프로필</a>
+        </div>
+
+        <!-- 로그아웃 -->
+        <div class="navbar_logout">
+          <form action="{% url 'accounts:logout' %}" method="POST">
+            {% csrf_token %}
+            <button>로그아웃</button>
+          </form>
+        </div>   
+      </div>
+
     </div>
 
-    
-    <a href="{% url 'accounts:profile' request.user.username %}">프로필</a>
-    
-    
   
-  <!-- 프로필 -->
-
-  <a href="{% url 'accounts:profile' request.user.username %}" class="navbar_profile">
-    {% if user.image %}
-      <img src="#" alt="">
-    {% else %}
-      <img src="/static/img/default.png" alt="">
-    {% endif %}
-  </a>
 
   <!-- 비로그인 상태 -->
   {% else %}
