@@ -63,14 +63,7 @@ class SignUpForm(UserCreationForm):
         model = get_user_model()
         fields = ('name', 'username', 'password1', 'password2', 'email',)
 
-
-class CustomUserChangeForm(UserChangeForm):
-
-    class Meta:
-        model = get_user_model()
-        fields = ('email', 'first_name', 'last_name',)
     
-
 class SearchIdForm(forms.Form):
     name_id = forms.CharField(
         label=_(''),
@@ -112,3 +105,28 @@ class SearchPasswordForm(forms.Form):
             'placeholder': '이메일',
         })
     )
+
+
+class UserInfoChangeForm(UserChangeForm):
+    name = forms.CharField(
+        label='이름',
+        max_length=20,
+        min_length=1,
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'accounts-change_name input_area',
+            })
+    )
+
+    email = forms.EmailField(
+        label='이메일',
+        max_length=50,
+        help_text=_(''),
+        widget=forms.TextInput(attrs={
+            'class': 'accounts-change-email input_area',
+            })
+    )
+
+    class Meta:
+        model = get_user_model()
+        fields = ('name', 'email',)

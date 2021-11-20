@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from accounts.forms import SignUpForm, SearchIdForm, SearchPasswordForm, CustomUserChangeForm
+from accounts.forms import SignUpForm, SearchIdForm, SearchPasswordForm, UserInfoChangeForm
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, SetPasswordForm
 from django.contrib.auth import get_user_model, login as auth_login, update_session_auth_hash
 from django.contrib.auth import logout as auth_logout
@@ -107,9 +107,51 @@ def search_change_password(request, user_pk):
 
 
 @require_safe
-def profile(request, user_pk):
-    user = get_object_or_404(get_user_model(), pk=user_pk)
+def profile(request, user_username):
+    person = get_object_or_404(get_user_model(), username=user_username)
     context = {
-        'user': user,
+        'person': person,
     }
     return render(request, 'accounts/profile.html', context)
+
+
+@require_http_methods(['GET', 'POST'])
+def change_personal_info(request, user_pk):
+    user = get_object_or_404(get_user_model(), pk=user_pk)
+    if request.method == 'POST':
+        user_change_form = UserInfoChangeForm(request.POST, request.FILES, instance=user)
+        if user_change_form.is_valid():
+            user_change_form.save()
+            return redirect('accounts:profile', user.username)
+    else:
+        user_change_form = UserInfoChangeForm(instance=user)
+    context = {
+        'user': user,
+        'user_change_form': user_change_form,
+    }
+    return render(request, 'accounts/change_personal_info.html', context)
+
+
+@login_required
+@require_http_methods(['GET', 'POST'])
+def change_password(request):
+    if request.method == 'POST':
+        change_password_form = PasswordChangeForm(request.user, request.POST)
+        if change_password_form.is_valid():
+            change_password_form.save()
+            update_session_auth_hash(request, change_password_form.user)
+            return redirect('movies:index')
+    else:
+        change_password_form = PasswordChangeForm(request.user)
+    context = {
+        'change_password_form': change_password_form,
+    }
+    return render(request, 'accounts/change_password.html', context)
+
+
+@require_POST
+def delete_user(request, user_pk):
+    if request.user.is_authenticated:
+        user = get_object_or_404(get_user_model(), pk=user_pk)
+        user.delete()
+    return redirect('movies:index')

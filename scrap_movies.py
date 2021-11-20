@@ -28,11 +28,11 @@ def scrap_keyword_list(movie_id):
 
 def scrap_movie_list():
     #list/리스트 id
-    for i in range(1, 1001):
-        movie_list_res = requests.get(f'https://api.themoviedb.org/3/list/{i}?api_key=3a5be8d94b0edc5a4cd336281a27127e&language=ko-KR').json()
+    for i in range(1, 20):
+        movie_list_res = requests.get(f'https://api.themoviedb.org/3/movie/popular?api_key=3a5be8d94b0edc5a4cd336281a27127e&language=ko-KR&page={i}').json()
         try:
-            movie_list_res['items']
-            for m in movie_list_res['items']:
+            movie_list_res['results']
+            for m in movie_list_res['results']:
                 if m and Movie.objects.filter(id_code=m['id']).exists():
                     continue
                 else:
