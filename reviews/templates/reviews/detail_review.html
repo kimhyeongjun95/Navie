@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {{ review.title }}
+  {{ review.content }}
+  {{ review.rate }}
+  <a href="{% url 'reviews:update_review' review.pk %}">수정</a>
+  <form action="{% url 'reviews:delete_review' review.pk %}" method="POST">
+    {% csrf_token %}
+    <button>삭제</button>
+  </form>
+{% endblock %}

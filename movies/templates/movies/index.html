@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for movie in action_movies %}
+  <a href="{% url 'movies:detail_movie' movie.pk %}">
+    <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
+  </a>
+  <br>
+{% endfor %}
+{% endblock %}
