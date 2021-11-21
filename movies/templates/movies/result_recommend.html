@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>추천완료</h1>
+  {% comment %} 공동 우승한 영화 2편 {% endcomment %}
+  <h2>공동 우승한 영화 2편</h2>
+  <img src="https://image.tmdb.org/t/p/original{{movie1.poster_path}}" width="200" height="310" alt="movie-poster">
+  <img src="https://image.tmdb.org/t/p/original{{movie2.poster_path}}" width="200" height="310" alt="movie-poster">
+
+  {% comment %} 알고리즘 기반 인생영화 추천 4편 {% endcomment %}
+  <h2>알고리즘 기반 인생영화 추천 4편</h2>
+  <img src="https://image.tmdb.org/t/p/original{{genre1_movie1.poster_path}}" width="200" height="310" alt="movie-poster">
+  <img src="https://image.tmdb.org/t/p/original{{genre1_movie2.poster_path}}" width="200" height="310" alt="movie-poster">
+  <img src="https://image.tmdb.org/t/p/original{{genre2_movie3.poster_path}}" width="200" height="310" alt="movie-poster">
+  <img src="https://image.tmdb.org/t/p/original{{genre2_movie4.poster_path}}" width="200" height="310" alt="movie-poster">
+
+{% endblock %}

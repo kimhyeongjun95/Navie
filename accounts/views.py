@@ -55,22 +55,37 @@ def search_info(request):
     if request.method == 'POST':
         search = request.POST
         print(search)
+        print(search.get('name_id'))
+        print(search.get('email_id'))
         try:
-            print(search.get('name_id'))
-            print(search.get('email_id'))
-            user1 = get_object_or_404(get_user_model(), name=search.get('name_id'))
-            user2 = get_object_or_404(get_user_model(), email=search.get('email_id'))
-            if user1.pk == user2.pk:
-                return redirect('accounts:searched_id', user1.pk)
+            u1 = get_object_or_404(get_user_model(), name=search.get('name_id'))
+            u2 = get_object_or_404(get_user_model(), email=search.get('email_id'))
+            users1 = get_user_model().objects.filter(name=search.get('name_id'))
+            users2 = get_user_model().objects.filter(email=search.get('email_id'))
+            for user1 in users1:
+                for user2 in users2:
+                    if user1.pk == user2.pk:
+                        return redirect('accounts:searched_id', user1.pk)
+            else:
+                return redirect('accounts:search_info')
         except:
             print(search.get('username_password'))
             print(search.get('name_password'))
             print(search.get('email_password'))
-            user3 = get_object_or_404(get_user_model(), username=search.get('username_password'))
-            user4 = get_object_or_404(get_user_model(), name=search.get('name_password'))
-            user5 = get_object_or_404(get_user_model(), email=search.get('email_password'))
-            if user3.pk == user4.pk == user5.pk:
-                return redirect('accounts:search_change_password', user3.pk)
+            try:
+                users3 = get_user_model().objects.filter(username=search.get('username_password'))
+                users4 = get_user_model().objects.filter(name=search.get('name_password'))
+                users5 = get_user_model().objects.filter(email=search.get('email_password'))
+                for user3 in users3:
+                    for user4 in users4:
+                        for user5 in users5:
+                            if user3.pk == user4.pk == user5.pk:
+                                return redirect('accounts:search_change_password', user3.pk)
+                else:
+                    return redirect('accounts:search_info')
+            except:
+                return redirect('accounts:search_info')
+
     search_id_form = SearchIdForm()
     search_password_form = SearchPasswordForm()
     context = {
