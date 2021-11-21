@@ -66,43 +66,37 @@ class SignUpForm(UserCreationForm):
     
 class SearchIdForm(forms.Form):
     name_id = forms.CharField(
-        label=_(''),
+        label='이름',
         widget=forms.TextInput(attrs={
-            'class': 'accounts-search_id-name',
-            'placeholder': '이름',
+            'class': 'find_id_name',
         })
     )
-
     email_id = forms.CharField(
-        label=_(''),
+        label='이메일',
         widget=forms.TextInput(attrs={
-            'class': 'accounts-search_id-email',
-            'placeholder': '이메일',
+            'class': 'find_id_email',
         })
     )
 
 class SearchPasswordForm(forms.Form):
     username_password = forms.CharField(
-        label=_(''),
+        label='아이디',
         widget=forms.TextInput(attrs={
             'class': 'accounts-search_password-id',
-            'placeholder': '아이디',
         })
     )
 
     name_password = forms.CharField(
-        label=_(''),
+        label='이름',
         widget=forms.TextInput(attrs={
             'class': 'accounts-search_password-name',
-            'placeholder': '이름',
         })
     )
 
     email_password = forms.CharField(
-        label=_(''),
+        label='이메일',
         widget=forms.TextInput(attrs={
             'class': 'accounts-search_password-email',
-            'placeholder': '이메일',
         })
     )
 

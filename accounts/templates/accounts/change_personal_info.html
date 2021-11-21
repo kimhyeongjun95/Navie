@@ -1,25 +1,59 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
-<h2>개인정보 수정</h2>
-{% if user.image %}
-  <img src="{{ user.image }}" alt="프로필 이미지" style="height: 80%; width: 80%;">
-{% else %}
-  <img src="{% static 'img/default.png' %}" alt="프로필 이미지">
-{% endif %}
-<form action="{% url 'accounts:change_personal_info' user.pk %}" method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  <label for="formFile" class="form-label">프로필 이미지 업로드</label>
-  <input class="form-control" type="file" name="image" accept="image/*"  id="formFile">
-  {{ user_change_form }}
-  <button>수정</button>
-</form>
+<link rel="stylesheet" href="/static/css/personal_info.css">
 
-<a href="{% url 'accounts:change_password' %}">비밀번호 변경</a>
+<section>
+  <div class="profile_change">
+    <h2>개인정보 수정</h2>
 
-<form action="{% url 'accounts:delete_user' user.pk %}" method="POST">
-  {% csrf_token %}
-  <button>회원탈퇴</button>
-</form>
+    {% if user.image %}
+      <div>
+        <img src="{{ user.image }}" alt="프로필 이미지" style="height: 100px; width: 100px;">
+      </div>
+    {% else %}
+      <div>
+        <img src="{% static 'img/default.png' %}" alt="프로필 이미지" style="height: 100px; width: 100px;">
+      </div>
+    {% endif %}
+    
+    <!-- 이미지 수정 / 이름 / 이메일 수정 -->
+    <form action="{% url 'accounts:change_personal_info' user.pk %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="formFile" class="form-label">프로필 이미지 업로드</label>
+      <input class="form-control" type="file" name="image" accept="image/*"  id="formFile">
+
+      {% for user_change in user_change_form %}
+        <div class="input_area">
+          {{ user_change }}
+          <label for="">
+            {{ user_change.label }}
+          </label>
+        </div>
+      {% endfor %}
+      
+      <div class="change_btn">
+        <button>수정</button>
+      </div>
+    </form>
+
+    <!-- 여기 두개 밑으로 -->
+    <!-- 비밀번호 변경 링크 -->
+    <div class="change_btn">
+      <button>
+          <a href="{% url 'accounts:change_password' %}">비밀번호 변경</a>
+      </button>
+    </div>
+
+    <!-- 회원탈퇴 버튼 -->
+    <form action="{% url 'accounts:delete_user' user.pk %}" method="POST">
+      {% csrf_token %}
+      <div class="delete_btn">
+        <button>회원탈퇴</button>
+      </div>
+    </form>
+  </div>
+
+</section>
+
 {% endblock %}

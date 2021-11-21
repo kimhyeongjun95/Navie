@@ -9,12 +9,12 @@ import requests
 # Create your views here.
 @require_safe
 def index(request):
-    recent_movies = Movie.objects.all().order_by('-release_date')
-    action_movies = Movie.objects.filter(genres=1).order_by('-release_date')
-    romance_movies = Movie.objects.filter(genres=14).order_by('-release_date')
-    crime_movies = Movie.objects.filter(genres=80).order_by('-release_date')
-    horror_movies = Movie.objects.filter(genres=27).order_by('-release_date')
-    comedy_movies = Movie.objects.filter(genres=35).order_by('-release_date')
+    recent_movies = Movie.objects.all().order_by('-release_date')[:15]
+    action_movies = Movie.objects.filter(genres=1).order_by('-release_date')[:15]
+    romance_movies = Movie.objects.filter(genres=14).order_by('-release_date')[:15]
+    crime_movies = Movie.objects.filter(genres=80).order_by('-release_date')[:15]
+    horror_movies = Movie.objects.filter(genres=27).order_by('-release_date')[:15]
+    comedy_movies = Movie.objects.filter(genres=35).order_by('-release_date')[:15]
     context = {
         'recent_movies': recent_movies,
         'action_movies': action_movies,
@@ -22,7 +22,6 @@ def index(request):
         'crime_movies': crime_movies,
         'horror_movies': horror_movies,
         'comedy_movies': comedy_movies,
-
     }
     return render(request, 'movies/index.html', context)
 

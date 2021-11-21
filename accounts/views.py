@@ -62,6 +62,8 @@ def search_info(request):
             user2 = get_object_or_404(get_user_model(), email=search.get('email_id'))
             if user1.pk == user2.pk:
                 return redirect('accounts:searched_id', user1.pk)
+            else:
+                return redirect('accounts:search')
         except:
             print(search.get('username_password'))
             print(search.get('name_password'))
@@ -71,6 +73,8 @@ def search_info(request):
             user5 = get_object_or_404(get_user_model(), email=search.get('email_password'))
             if user3.pk == user4.pk == user5.pk:
                 return redirect('accounts:search_change_password', user3.pk)
+            else:
+                return redirect('accounts:search')
     search_id_form = SearchIdForm()
     search_password_form = SearchPasswordForm()
     context = {
