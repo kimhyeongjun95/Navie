@@ -1,17 +1,51 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>아이디 찾기</h2>
-  <form action="{% url 'accounts:search_info' %}" method="POST">
-    {% csrf_token %}
-    {{ search_id_form }}
-    <button type="submit">아이디 찾기</button>
-  </form>
+<link rel="stylesheet" href="/static/css/search_info.css">
 
-  <h2>비밀번호 찾기</h2>
-  <form action="{% url 'accounts:search_info' %}" method="POST">
-    {% csrf_token %}
-    {{ search_password_form }}
-    <button type="sumbit">비밀번호 찾기</button>
-  </form>
+<div class="search_info">
+
+  <div class="find_id">
+    <h2>아이디 찾기</h2>
+    <form action="{% url 'accounts:search_info' %}" method="POST">
+      {% csrf_token %}
+        {% for search in search_id_form %}
+          <div class="input_area">
+            {{ search }}
+            <label for="">
+              {{ search.label }}
+            </label>
+          </div>
+        {% endfor %}
+      <div class="find_info_btn">
+        <button type="submit">아이디 찾기</button>
+      </div>
+    </form>
+
+  </div>
+
+  <div class="find_pw">
+    <h2>비밀번호 찾기</h2>
+    <form action="{% url 'accounts:search_info' %}" method="POST">
+      {% csrf_token %}
+      {% for pw in search_password_form %}
+        <div class="input_area">
+          {{ pw }}
+          <label for="">
+            {{ pw.label }}
+          </label>
+        </div>
+      {% endfor %}
+
+      <div class="find_info_btn">
+        <button type="sumbit">비밀번호 찾기</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+
+
+
 {% endblock %}

@@ -1,30 +1,33 @@
-section {
+.search_info {
   position: absolute;
   top: 50%;
   left: 50%;
   transform:translate(-50%, -50%);
-}
-li {
-  list-style: none;
+  width:850px;
+  margin: 0 auto;
+  /* width: 40%; */
 }
 
-.signup {
-  position: relative;
+/* 아이디 찾기 */
+.find_id {
+  float: left;
+  width: 300px;
 }
-.signup h3{
-  font-size: 24px;
+
+.find_id h2,
+.find_pw h2{
+  font-size: 30px;
   color: #11f3a2;
   text-align: center;
 }
 
-.signup_area {
-width:400px;
-position: relative;
-margin-top: 20px;
+.input_area {
+  width:300px;
+  position: relative;
+  margin-top: 20px;
 }
 
-.signup_area:first-child {margin-top: 0;}
-.signup_area input {
+.input_area input{
   width:100%;
   padding: 20px 10px 10px;
   background-color: transparent;
@@ -33,8 +36,7 @@ margin-top: 20px;
   font-size: 18px; color:#fff;
   outline: none;
 }
-
-.signup_area label {
+.input_area label {
   position: absolute;
   left: 10px; top: 15px;
   font-size: 18px;
@@ -42,19 +44,27 @@ margin-top: 20px;
   transition: all .5s ease;
 }
 
-.signup_area input:focus + label,
-.signup_area input:valid + label {
+.input_area input:focus + label,
+.input_area input:valid + label {
   top: -3px;
   font-size: 13; color: #11f3a2;
 }
 
-.signup_btn {
+.find_info_btn {
   margin-top: 30px;
+
 }
-.signup_btn button {
+.find_info_btn button {
   width:100%; height: 50px;
   background: #11f3a2;
   font-size: 20px;
   border: none;
   border-radius: 25px;
+}
+
+
+/* 비밀번호 찾기 */
+.find_pw {
+  float: right;
+  width: 300px;
 }

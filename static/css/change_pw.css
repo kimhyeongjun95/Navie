@@ -4,27 +4,29 @@ section {
   left: 50%;
   transform:translate(-50%, -50%);
 }
-li {
-  list-style: none;
-}
-
-.signup {
+.change_pw {
   position: relative;
 }
-.signup h3{
-  font-size: 24px;
+.change_pw h1 {
   color: #11f3a2;
   text-align: center;
 }
 
-.signup_area {
-width:400px;
-position: relative;
-margin-top: 20px;
+.change_pw .helper ul {
+  list-style: none;
+  color:#999;
+  margin-top: 30px;
+  padding:0px;
+  /* position: absolute; */
 }
 
-.signup_area:first-child {margin-top: 0;}
-.signup_area input {
+.input_area {
+  width:400px;
+  position: relative;
+  margin-top: 20px;
+}
+.input_area:first-child {margin-top: 0;}
+.input_area input{
   width:100%;
   padding: 20px 10px 10px;
   background-color: transparent;
@@ -34,7 +36,7 @@ margin-top: 20px;
   outline: none;
 }
 
-.signup_area label {
+.input_area label {
   position: absolute;
   left: 10px; top: 15px;
   font-size: 18px;
@@ -42,16 +44,16 @@ margin-top: 20px;
   transition: all .5s ease;
 }
 
-.signup_area input:focus + label,
-.signup_area input:valid + label {
-  top: -3px;
+.input_area input:focus + label,
+.input_area input:valid + label {
+  top: -3px; 
   font-size: 13; color: #11f3a2;
 }
 
-.signup_btn {
+.change_btn {
   margin-top: 30px;
 }
-.signup_btn button {
+.change_btn button {
   width:100%; height: 50px;
   background: #11f3a2;
   font-size: 20px;

@@ -25,7 +25,6 @@ def index(request):
         'crime_movies': crime_movies,
         'horror_movies': horror_movies,
         'comedy_movies': comedy_movies,
-
     }
     return render(request, 'movies/index.html', context)
 

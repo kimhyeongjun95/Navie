@@ -1,0 +1,84 @@
+section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+}
+.profile_change {
+  position: relative;
+}
+
+h2 {
+  text-align: center;
+  color: #11f3a2;
+  margin-bottom: 50px;
+}
+
+img {
+  box-shadow: 0 0 0 1px;
+  border-radius: 70%;
+}
+
+.form-label {
+  color: #11f3a2;
+}
+
+.input_area {
+  width:400px;
+  position: relative;
+  margin-top: 20px;
+}
+.input_area:first-child {margin-top: 0;}
+.input_area input{
+  width:100%;
+  padding: 20px 10px 10px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #999;
+  font-size: 18px; color:#fff;
+  outline: none;
+}
+
+.input_area label {
+  position: absolute;
+  left: 10px; top: 15px;
+  font-size: 18px;
+  color: #999;
+  transition: all .5s ease;
+}
+.input_area input:focus + label,
+.input_area input:valid + label {
+  top: -3px; 
+  font-size: 13; color: #11f3a2;
+}
+
+.change_btn {
+  margin-top: 15px;
+}
+
+.change_btn button{
+  width:100%; height: 50px;
+  background: #11f3a2;
+  font-size: 20px;
+  border: none;
+  border-radius: 25px;
+  color: black;
+}
+
+.change_btn button a {
+  text-decoration: none;
+  color: black;
+}
+
+.delete_btn {
+  margin-top: 15px;
+}
+
+.delete_btn button{
+  width:100%; height: 50px;
+  background:#ff1a0e;
+  font-size: 20px;
+  border: none;
+  border-radius: 25px;
+  color: #dbdcdb;
+}

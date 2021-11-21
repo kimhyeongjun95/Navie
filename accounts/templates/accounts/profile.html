@@ -3,6 +3,8 @@
 {% block content %}
   <h2>{{ person.name }} 님의 영화창고</h2>
   {% if request.user.username == person.username %}
-    <a href="{% url 'accounts:change_personal_info' person.pk %}">회원정보 수정</a>
+    <div>
+      <a href="{% url 'accounts:change_personal_info' person.pk %}">회원정보 수정</a>
+    </div>
   {% endif %}
 {% endblock %}
