@@ -45,18 +45,20 @@ def detail_review(request, review_pk):
 @require_http_methods(['GET', 'POST'])
 def update_review(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
-    if request.method == 'POST':
-        review_update_form = ReviewForm(request.POST, instance=review)
-        if review_update_form.is_valid():
-            review.save()
-            return redirect('reviews:detail_review', review.pk)
-    else:
-        review_update_form = ReviewForm(instance=review)
-    context = {
-        'review': review,
-        'review_update_form': review_update_form,
-    }
-    return render(request, 'reviews/update_review.html', context)
+    if request.user == review.user:
+        if request.method == 'POST':
+            review_update_form = ReviewForm(request.POST, instance=review)
+            if review_update_form.is_valid():
+                review.save()
+                return redirect('reviews:detail_review', review.pk)
+        else:
+            review_update_form = ReviewForm(instance=review)
+        context = {
+            'review': review,
+            'review_update_form': review_update_form,
+        }
+        return render(request, 'reviews/update_review.html', context)
+    return redirect('reviews:detail_review', review.pk)
 
 
 @require_POST
