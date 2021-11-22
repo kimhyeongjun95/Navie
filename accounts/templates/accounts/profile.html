@@ -1,10 +1,61 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>{{ person.name }} 님의 영화창고</h2>
-  {% if request.user.username == person.username %}
-    <div>
-      <a href="{% url 'accounts:change_personal_info' person.pk %}">회원정보 수정</a>
+<link rel="stylesheet" href="/static/css/profile.css">
+
+  <!-- 타이틀 및 회원정보 수정 -->
+  <div class="titlebox">
+    <h1>{{ person.name }} 님의 영화창고</h1>
+    {% if request.user.username == person.username %}
+      <div>
+        <a href="{% url 'accounts:change_personal_info' person.pk %}">회원정보 변경</a>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- 프로필 메뉴 -->
+  <ul class="profile_menu">
+    <li>나의 관심영화</li>
+    <li>내가 쓴 리뷰</li>
+    <li>추천 인생영화</li>
+  </ul>
+
+  <!-- 나의 관심영화 -->
+  <div class="my_like">
+    <h2>나의 관심영화</h2>
+    <div class="my_like_box">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <!-- 만약 4개이상이라면 넘어가기? -->
     </div>
-  {% endif %}
+  </div>
+
+  <!-- 내가 쓴 리뷰 -->
+  <div class="my_review">
+    <h2>내가 쓴 리뷰</h2>
+    <div class="my_review_box">
+      <!-- <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div> -->
+    </div>
+  </div>
+
+
+  <!-- 추천 인생영화 -->
+  <div class="recommended">
+    <h2>추천 인생영화</h2>
+    <div class="recommended_box">
+      <!-- <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div> -->
+    </div>
+  </div>
 {% endblock %}

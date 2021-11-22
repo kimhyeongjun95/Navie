@@ -1,0 +1,106 @@
+.titlebox {
+  position: absolute;
+  left: 10%;
+  top: 12%;
+  color:#11f3a2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.titlebox a {
+  color:black;
+  background-color:#049662;
+  border: 2px solid;
+  border-radius: 30px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.profile_menu {
+  border: 1px solid #11f3a2;
+  position: absolute;
+  top: 50%;
+  left: 12%;
+  height: 200px;
+  transform:translate(-50%, -50%);
+  padding:0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profile_menu li {
+  font-size: 18px;
+  list-style: none;
+  color: white;
+  padding: 12px 8px 12px 8px;
+  text-align: center;
+  margin: 0 15px;
+}
+.profile_menu li:hover {
+  color:#11f3a2;
+  cursor: pointer;
+}
+
+
+/* ------나의 관심영화------ */
+.my_like {
+  position: absolute;
+  top: 25%;
+  left: 22%;
+}
+.my_like h2 {
+  color:white;
+}
+
+/* 그리드 박스 */
+.my_like_box {
+  display: grid;
+  background-color: green;
+  grid-template-columns: 210 210 210 210;
+  grid-template-rows: 300 300 300 300;
+  grid-gap: 10px;
+  margin-top: 80px;
+  padding: 10px;
+  width: 1800px;
+}
+
+.my_like_box > div {
+  background-color: #11f3a2;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+
+/* ------내가 쓴 리뷰------ */
+.my_review {
+  position: absolute;
+  top: 25%;
+  left: 22%;
+}
+.my_review h2 {
+  color:white;
+}
+.my_review_box {
+  padding: 0;
+}
+.my_review_box > div {
+  color: white;
+}
+
+/* ------추천 인생영화------ */
+.recommended {
+  position: absolute;
+  top: 25%;
+  left: 22%;
+}
+.recommended h2 {
+  color:white;
+}
+.recommended_box {
+  padding: 0;
+}
+.recommended_box > div {
+  color: white;
+}
