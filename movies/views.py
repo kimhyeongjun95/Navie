@@ -16,9 +16,9 @@ def index(request):
     recent_poster = Movie.objects.all().order_by('-release_date')[:15]
     action_movies = Movie.objects.filter(genres=1).order_by('-release_date')[:15]
     romance_movies = Movie.objects.filter(genres=14).order_by('-release_date')[:15]
-    crime_movies = Movie.objects.filter(genres=80).order_by('-release_date')[:15]
-    horror_movies = Movie.objects.filter(genres=27).order_by('-release_date')[:15]
-    comedy_movies = Movie.objects.filter(genres=35).order_by('-release_date')[:15]
+    crime_movies = Movie.objects.filter(genres=5).order_by('-release_date')[:15]
+    horror_movies = Movie.objects.filter(genres=11).order_by('-release_date')[:15]
+    comedy_movies = Movie.objects.filter(genres=4).order_by('-release_date')[:15]
     context = {
         'recent_movies': recent_movies,
         'recent_poster': recent_poster,

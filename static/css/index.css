@@ -3,6 +3,9 @@ section {
   top: 80%;
   left: 50%;
   transform:translate(-50%, -50%);
+  margin-top: 800px;
+  /* position: static;
+  margin: 0 auto; */
 }
 
 li {
@@ -19,8 +22,9 @@ li {
 
 h1 {
   position: absolute;
-  margin-top: 400px;
-  margin-left: 100px;
+  margin-top: 300px;
+  transform:translate(-50%, -50%);
+  left: 50%;
   color: #11f3a2;
   font-size: 40px;
 }
@@ -36,9 +40,12 @@ h1 {
   float:left;
   margin-right: 0px;
 }
-
+.slides img {
+  box-shadow: 10px 10px 50px 10px green inset;
+  opacity: 0.8;
+}
 .slides img:hover {
-  opacity: 0.4;
+  opacity: 1.0;
 }
 
 .controls{
@@ -59,16 +66,18 @@ h1 {
   align-items: center;
 }
 
-.arrow-btn {
-  width: 84px;
-  height: 84px;
+.background_img {
+  margin-top: 50px;
+  opacity: 0.2;
 }
-.carousel-inner {
-  height: 800px;
+.background_img img {
+  position: fixed;
+  background-size: cover;
+  width: 100%;
+  height: 1000px;
 }
 
-.carousel-inner img {
-  width: 100%;
-  height: 8%;
-  object-fit: cover;
+h3 {
+  margin-left: 150px;
+  color: #11f3a2;
 }
