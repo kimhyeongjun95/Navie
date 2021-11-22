@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <button class="start-btn">시작하기</button>
+  <link rel="stylesheet" href="/static/css/recommend_movies.css">
 
-  {% comment %} 8강 4강 이렇게 글자가 바뀜 {% endcomment %}
+  <button class="start-btn">영화 월드컵 시작하기</button>
   <h2 class="tournament"></h2>
+  <div class="posters">
+    <img id="first-movie" src="/static/img/black.png" width="40%" height="75%" alt="">
+    <h2 id="vs"></h2>
+    <img id="second-movie" src="/static/img/black.png" width="40%" height="75%" alt="">
+  </div>
 
-  <img id="first-movie" src="" width="200" height="310" alt="">
-  <img id="second-movie" src="" width="200" height="310" alt="">
 {% endblock %}
 
 {% block script %}
@@ -17,6 +20,7 @@
     const firstMovie = document.querySelector('#first-movie')
     const secondMovie = document.querySelector('#second-movie')
     const tournament = document.querySelector('.tournament')
+    const vs = document.querySelector('#vs')
     let randomMovies = []
     // let firstMovieStatus = false
     // let secondMovieStatus = false
@@ -72,6 +76,7 @@
           console.log(randomMovies)
           
           tournament.innerText = '8강'
+          vs.innerText = 'VS'
           firstMovie.setAttribute("src", `https://image.tmdb.org/t/p/original${randomMovies[0][1]}`)
           secondMovie.setAttribute("src", `https://image.tmdb.org/t/p/original${randomMovies[1][1]}`)
 

@@ -1,17 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>추천완료</h1>
-  {% comment %} 공동 우승한 영화 2편 {% endcomment %}
-  <h2>공동 우승한 영화 2편</h2>
-  <img src="https://image.tmdb.org/t/p/original{{movie1.poster_path}}" width="200" height="310" alt="movie-poster">
-  <img src="https://image.tmdb.org/t/p/original{{movie2.poster_path}}" width="200" height="310" alt="movie-poster">
+  <link rel="stylesheet" href="/static/css/result_recommend.css">
 
   {% comment %} 알고리즘 기반 인생영화 추천 4편 {% endcomment %}
-  <h2>알고리즘 기반 인생영화 추천 4편</h2>
-  <img src="https://image.tmdb.org/t/p/original{{genre1_movie1.poster_path}}" width="200" height="310" alt="movie-poster">
-  <img src="https://image.tmdb.org/t/p/original{{genre1_movie2.poster_path}}" width="200" height="310" alt="movie-poster">
-  <img src="https://image.tmdb.org/t/p/original{{genre2_movie3.poster_path}}" width="200" height="310" alt="movie-poster">
-  <img src="https://image.tmdb.org/t/p/original{{genre2_movie4.poster_path}}" width="200" height="310" alt="movie-poster">
+  <h2 class="recommend-title">당신을 위한 인생영화</h2>
+  <div class="recommend-movies">
+    <a href="{% url 'movies:detail_movie' genre1_movie1.pk %}" style="padding: 0px;">
+      <img src="https://image.tmdb.org/t/p/original{{genre1_movie1.poster_path}}" width="30%" height="50%" alt="movie-poster">
+    </a>
+    <a href="{% url 'movies:detail_movie' genre1_movie2.pk %}" style="padding: 0px;">
+      <img src="https://image.tmdb.org/t/p/original{{genre1_movie2.poster_path}}" width="30%" height="50%" alt="movie-poster">
+    </a>
+    <a href="{% url 'movies:detail_movie' genre2_movie3.pk %}" style="padding: 0px;">
+      <img src="https://image.tmdb.org/t/p/original{{genre2_movie3.poster_path}}" width="30%" height="50%" alt="movie-poster">
+    </a>
+    <a href="{% url 'movies:detail_movie' genre2_movie4.pk %}" style="padding: 0px;">
+      <img src="https://image.tmdb.org/t/p/original{{genre2_movie4.poster_path}}" width="30%" height="50%" alt="movie-poster">
+    </a>
+  </div>
+
+  {% comment %} 공동 우승한 영화 2편 {% endcomment %}
+  <h2 class="winner-title">영화 월드컵 공동 우승</h2>
+  <div class="winner-movies">
+    <a href="{% url 'movies:detail_movie' movie1.pk %}" style="padding: 0px;">
+      <img src="https://image.tmdb.org/t/p/original{{movie1.poster_path}}" width="30%" height="50%" alt="movie-poster">
+    </a>
+    <a href="{% url 'movies:detail_movie' movie2.pk %}" style="padding: 0px;">
+      <img src="https://image.tmdb.org/t/p/original{{movie2.poster_path}}" width="30%" height="50%" alt="movie-poster">
+    </a>
+  </div>
+
 
 {% endblock %}
