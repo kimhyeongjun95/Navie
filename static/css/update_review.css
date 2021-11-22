@@ -1,0 +1,83 @@
+.review-update-container {
+  width: 65%;
+  height: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+  border: solid 1px #11f3a2;
+  border-radius: 5px;
+  padding: 2%;
+}
+
+.review-update-form {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  row-gap: 2%;
+  grid-template-rows: 9% 37% 37% 5% 5%;
+  grid-template-columns: 80% 7% 4% 8%;
+  grid-template-areas: 'review-title review-title review-title review-title'
+                       'review-content review-content review-content review-content'
+                       'review-content review-content review-content review-content'
+                       '. rate-update-label review-rate update-ten'
+                       '. . . review-update-btn';
+}
+
+.input_area {
+  background-color: #0D0C0C;
+  color: white;
+  padding: 0.5%;
+}
+
+.review-title {
+  grid-area: review-title;
+  border-top: solid 1px #0D0C0C;
+  border-left: solid 1px #0D0C0C;
+  border-right: solid 1px #0D0C0C;
+  border-bottom: solid 1px #11f3a2;
+  font-size: 20px;
+  padding: 1%;
+}
+
+.review-content {
+  grid-area: review-content;
+  border-top: solid 1px #0D0C0C;
+  border-left: solid 1px #0D0C0C;
+  border-right: solid 1px #0D0C0C;
+  border-bottom: solid 1px #11f3a2;
+  padding: 1%;
+}
+
+.rate-update-label {
+  grid-area: rate-update-label;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.review-rate {
+  grid-area: review-rate;
+  text-align: center;
+  border-top: solid 1px #0D0C0C;
+  border-left: solid 1px #0D0C0C;
+  border-right: solid 1px #0D0C0C;
+  border-bottom: solid 1px #11f3a2;
+}
+
+.update-ten {
+  grid-area: update-ten;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.review-update-btn {
+  grid-area: review-update-btn;
+  background: #049662;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 0.3%;
+}

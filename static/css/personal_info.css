@@ -82,3 +82,7 @@ img {
   border-radius: 25px;
   color: #dbdcdb;
 }
+
+.form-control {
+  background-color: black;
+}

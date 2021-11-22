@@ -1,9 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <form action="{% url 'reviews:update_review' review.pk %}" method="POST">
-    {% csrf_token %}
-    {{ review_update_form }}
-    <button>수정</button>
-  </form>
+  <link rel="stylesheet" href="/static/css/update_review.css">
+
+  <div class="review-update-container">
+    <form class="review-update-form" action="{% url 'reviews:update_review' review.pk %}" method="POST">
+      {% csrf_token %}
+      {{ review_update_form }}
+      <div class="rate-update-label">
+        <span>
+          평점
+        </span>
+      </div>
+      <div class="update-ten">
+        <span>
+          / 10
+        </span>
+      </div>
+      <button class="review-update-btn">수정</button>
+    </form>
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script>
+  </script>
 {% endblock %}
