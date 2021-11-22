@@ -1,0 +1,49 @@
+body {
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.recommend-title {
+  color: #11f3a2;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+}
+
+.recommend-movies {
+  width: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+  /* display: flex; */
+  /* justify-content: space-evenly; */
+}
+
+.winner-title {
+  color: #11f3a2;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+}
+
+.winner-movies {
+  position: absolute;
+  top: 125%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+  /* display: flex; */
+  /* justify-content: center; */
+}
+
+img:hover {
+  cursor: pointer;
+  transition: 0.2s;
+  transform: translateY(-2px);
+  opacity: 0.5;
+}

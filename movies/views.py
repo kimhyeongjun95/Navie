@@ -108,14 +108,14 @@ def recommend_movies(request):
 
 
 def movies_worldcup(request):
-    action = Movie.objects.filter(genres=1)
-    romance = Movie.objects.filter(genres=14)
-    crime = Movie.objects.filter(genres=5)
-    horror = Movie.objects.filter(genres=11)
-    comedy = Movie.objects.filter(genres=4)
-    sf = Movie.objects.filter(genres=15)
-    family = Movie.objects.filter(genres=8)
-    music = Movie.objects.filter(genres=12)
+    action = Movie.objects.filter(genres=1).order_by('-release_date')[:25]
+    romance = Movie.objects.filter(genres=14).order_by('-release_date')[:25]
+    crime = Movie.objects.filter(genres=5).order_by('-release_date')[:25]
+    horror = Movie.objects.filter(genres=11).order_by('-release_date')[:25]
+    comedy = Movie.objects.filter(genres=4).order_by('-release_date')[:25]
+    sf = Movie.objects.filter(genres=15).order_by('-release_date')[:25]
+    family = Movie.objects.filter(genres=8).order_by('-release_date')[:25]
+    music = Movie.objects.filter(genres=12).order_by('-release_date')[:25]
     
     # 8개 장르 영화 중복없이 넣기
     random_movies = []

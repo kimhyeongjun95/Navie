@@ -1,0 +1,45 @@
+.start-btn {
+  width: 20%;
+  height: 50px;
+  background: #11f3a2;
+  font-size: 20px;
+  border: none;
+  border-radius: 25px;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+}
+
+.tournament {
+  color: #11f3a2;
+  width: 20%;
+  margin: 0px;
+  position: absolute;
+  text-align: center;
+  top: 25%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+}
+
+.posters {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+}
+
+#vs {
+  margin: 0px;
+  color: #11f3a2;
+  padding-top: 25%;
+}
+
+img:hover {
+  cursor: pointer;
+  transition: 0.2s;
+  transform: translateY(-2px);
+  opacity: 0.5;
+}
