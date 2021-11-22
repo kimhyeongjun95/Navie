@@ -8,11 +8,11 @@
     <h2>개인정보 수정</h2>
 
     {% if user.image %}
-      <div>
-        <img src="{{ user.image }}" alt="프로필 이미지" style="height: 100px; width: 100px;">
+      <div style="text-align: center;">
+        <img src="/media/{{ user.image }}" alt="프로필 이미지" style="height: 100px; width: 100px;">
       </div>
     {% else %}
-      <div>
+      <div style="text-align: center;">
         <img src="{% static 'img/default.png' %}" alt="프로필 이미지" style="height: 100px; width: 100px;">
       </div>
     {% endif %}
@@ -21,7 +21,7 @@
     <form action="{% url 'accounts:change_personal_info' user.pk %}" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <label for="formFile" class="form-label">프로필 이미지 업로드</label>
-      <input class="form-control" type="file" name="image" accept="image/*"  id="formFile">
+      <input class="form-control" type="file" name="image" accept="image/*" id="formFile">
 
       {% for user_change in user_change_form %}
         <div class="input_area">

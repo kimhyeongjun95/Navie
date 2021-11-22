@@ -15,30 +15,30 @@ body {
 }
 
 .recommend-movies {
-  width: auto;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform:translate(-50%, -50%);
-  /* display: flex; */
-  /* justify-content: space-evenly; */
+  /* display: flex;
+  justify-content: space-evenly; */
 }
 
 .winner-title {
   color: #11f3a2;
   position: absolute;
-  top: 90%;
+  top: 70%;
   left: 50%;
   transform:translate(-50%, -50%);
 }
 
 .winner-movies {
   position: absolute;
-  top: 125%;
+  top: 95%;
   left: 50%;
   transform:translate(-50%, -50%);
-  /* display: flex; */
-  /* justify-content: center; */
+  text-align: center;
+  /* display: flex;
+  justify-content: center; */
 }
 
 img:hover {

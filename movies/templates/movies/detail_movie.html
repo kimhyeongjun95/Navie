@@ -13,6 +13,8 @@
     >
     </iframe>
 
+   {% comment %} 평점 {% endcomment %}
+   {{ movie_avg_rate }} / 10
    {% comment %} 관심있는 영화 {% endcomment %}
    <form data-movie-id="{{ movie.pk }}" class="like-movie-form" method="POST">
       {% csrf_token %}

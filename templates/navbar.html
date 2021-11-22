@@ -36,7 +36,7 @@
       <!-- 프로필 이미지 -->
       <a href="#" class="navbar_profile_image">
         {% if user.image %}
-          <img src="#" alt="">
+          <img src="/media/{{ user.image }}" alt="">
         {% else %}
           <img src="/static/img/default.png" alt="">
         {% endif %}

@@ -1,9 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <form action="{% url 'reviews:create_review' movie.pk %}" method="POST">
-    {% csrf_token %}
-    {{ review_form }}
-    <button>작성</button>
-  </form>
+  <link rel="stylesheet" href="/static/css/create_review.css">
+
+  <div class="review-container">
+    <form class="review-form" action="{% url 'reviews:create_review' movie.pk %}" method="POST">
+      {% csrf_token %}
+      {{ review_form }}
+      <div class="rate-label">
+        <span>
+          평점
+        </span>
+      </div>
+      <div class="ten">
+        <span>
+          / 10
+        </span>
+      </div>
+      <button class="review-create-btn">작성</button>
+    </form>
+  </div>
+{% endblock %}
+
+{% block script %}
+  <script>
+  </script>
 {% endblock %}

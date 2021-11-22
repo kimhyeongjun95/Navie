@@ -76,9 +76,22 @@ def detail_movie(request, movie_pk):
     except:
         pass
     
+    movie_reviews = movie.review_set.all()
+    movie_reviews_cnt = 0
+    movie_reviews_sum = 0
+    for review in movie_reviews:
+        movie_reviews_cnt += 1
+        movie_reviews_sum += review.rate
+    
+    if movie_reviews_cnt:
+        movie_avg_rate = round(movie_reviews_sum / movie_reviews_cnt)
+    else:
+        movie_avg_rate = 0
+
     context = {
         'movie': movie,
         'youtube_key': youtube_key,
+        'movie_avg_rate': movie_avg_rate,
     }
     return render(request, 'movies/detail_movie.html', context)
 
