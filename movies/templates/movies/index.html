@@ -1,76 +1,239 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<link rel="stylesheet" href="/static/css/index.css">
 
-  <!-- 최신영화 -->
+  <!-- 배경화면 -->
+  <div class="background_img">
+    <img src="/static/img/background.jpg" alt="">
+  </div>
+  
+  <h1>당신의 인생 영화를 찾아드립니다</h1>
+
   <section>
-    <div class="caroussel">
-      <p class="controls">
-        <span class="prev">
-          <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
-          </svg>
-        </span>
+    <!-- 최신영화 -->
+    <div>
+      <h3>최신 영화</h3>
+
+      <div class="caroussel" id="recent_caroussel">
+        <p class="controls" id="recent_controls">
+          <span class="prev" id="recent_prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+            </svg>
+          </span>
       </p>
       
-      <div class="slide_wrap">
-        <ul class="slides">
+      <div class="slide_wrap" id="recent_slide_wrap">
+        <ul class="slides" id="recent_slides">
           {% for movie in recent_movies %}
-              <li>
+          <li>
                 <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
                   <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
                 </a>
               </li>
-          {% endfor %}
-        </ul>
+              {% endfor %}
+            </ul>
+          </div>
+          
+          <p class="controls">
+            <span class="next" id="recent_next">
+              <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+              </svg>
+            </span>
+          </p>
       </div>
-      
-      <p class="controls">
-        <span class="next">
-          <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
-          </svg>
-        </span>
-      </p>
+
     </div>
+    
+    <hr>
+    
+    <!-- 액션영화 -->
+    <div>
+      <h3>액션 영화</h3>
+      <div class="caroussel" id="action_caroussel">
+        <p class="controls" id="action_controls">
+          <span class="prev" id="action_prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+            </svg>
+          </span>
+        </p>
+        
+        <div class="slide_wrap" id="action_slide_wrap">
+          <ul class="slides" id="action_slides">
+            {% for movie in action_movies %}
+            <li>
+              <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
+                <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        
+        <p class="controls" id="action_controls">
+          <span class="next" id="action_next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+            </svg>
+          </span>
+        </p>
+      </div>
+
+    </div>
+    
+    <hr>
+
+    <!-- 로맨스 영화 -->
+    <div>
+      <h3>로맨스 영화</h3>
+      <div class="caroussel" id="romance_caroussel">
+        <p class="controls" id="romance_controls">
+          <span class="prev" id="romance_prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+            </svg>
+          </span>
+        </p>
+        
+        <div class="slide_wrap" id="romance_slide_wrap">
+          <ul class="slides" id="romance_slides">
+            {% for movie in romance_movies %}
+            <li>
+              <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
+                <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        
+        <p class="controls" id="romance_controls">
+          <span class="next" id="romance_next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+            </svg>
+          </span>
+        </p>
+      </div>
+    </div>
+    
+    <hr>
+
+    <!-- 범죄 영화 -->
+    <div>
+      <h3>범죄 영화</h3>
+      <div class="caroussel" id="crime_caroussel">
+        <p class="controls" id="crime_controls">
+          <span class="prev" id="crime_prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+            </svg>
+          </span>
+        </p>
+        
+        <div class="slide_wrap" id="crime_slide_wrap">
+          <ul class="slides" id="crime_slides">
+            {% for movie in crime_movies %}
+            <li>
+              <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
+                <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        
+        <p class="controls" id="crime_controls">
+          <span class="next" id="crime_next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+            </svg>
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- 공포 영화 -->
+    <div>
+      <h3>공포 영화</h3>
+      <div class="caroussel" id="horror_caroussel">
+        <p class="controls" id="horror_controls">
+          <span class="prev" id="horror_prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+            </svg>
+          </span>
+        </p>
+        
+        <div class="slide_wrap" id="horror_slide_wrap">
+          <ul class="slides" id="horror_slides">
+            {% for movie in horror_movies %}
+            <li>
+              <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
+                <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        
+        <p class="controls" id="horror_controls">
+          <span class="next" id="horror_next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+            </svg>
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- 코미디 영화 -->
+    <div>
+      <h3>코미디 영화</h3>
+      <div class="caroussel" id="comedy_caroussel">
+        <p class="controls" id="comedy_controls">
+          <span class="prev" id="comedy_prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+            </svg>
+          </span>
+        </p>
+        
+        <div class="slide_wrap" id="comedy_slide_wrap">
+          <ul class="slides" id="comedy_slides">
+            {% for movie in comedy_movies %}
+            <li>
+              <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
+                <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        
+        <p class="controls" id="comedy_controls">
+          <span class="next" id="comedy_next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+            </svg>
+          </span>
+        </p>
+      </div>
+    </div>
+
   </section>
 
-
-<script>
-  let slides = document.querySelector('.slides');
-  let slide = document.querySelectorAll('.slides li');
-  console.log(slide)
-  let currentIdx = 0;
-  let slideCount = slide.length;
-  let prevBtn = document.querySelector('.prev')
-  let nextBtn = document.querySelector('.next')
-  let slideWidth = 200;
-  let slideMargin = 0;
-
-  slides.style.width = (slideWidth + slideMargin) * slideCount - slideMargin + 'px';
-  
-  function moveSlide(num) {
-    slides.style.left = -num * 200 +  'px';
-    currentIdx = num;
-  }
-
-  nextBtn.addEventListener('click', function() {
-    // slide count에서 몇개를 보여줄지를 기준으로 빼줘야한다.
-    if(currentIdx < slideCount - 6){
-      moveSlide(currentIdx + 1);
-    } else {
-      moveSlide(0);
-    }
-  });
-  prevBtn.addEventListener('click', function() {
-    if(currentIdx > 0){
-      moveSlide(currentIdx - 1);
-    } else {
-      moveSlide(slideCount-6);
-    }
-  });
-
-</script>
 <!-- 추가 구현사항
-로맨스 / 액션 등을 버튼으로 누름으로 비동기적으로 캐러셀 변화 -->
-{% endblock %}
+  로맨스 / 액션 등을 버튼으로 누름으로 비동기적으로 캐러셀 변화 -->
+  {% endblock %}
+
+{% block script %}
+<script src="/static/js/index.js" defer></script>
+{% endblock script %}
