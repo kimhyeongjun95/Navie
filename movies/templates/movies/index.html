@@ -1,36 +1,40 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<link rel="stylesheet" href="/static/css/index.css">
-  <div class="slide_wrap">
-    <ul class="slides">
-      {% for movie in recent_movies %}
-          <li>
-            <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
-              <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
-            </a>
-          </li>
-      {% endfor %}
-    </ul>
-  </div>
-  <p class="controls">
-    <span class="prev">뒤</span>
-    <span class="next">앞</span>
-  </p>
 
-  <!-- 최신 영화
-  {% for movie in recent_movies %}
-    <a href="{% url 'movies:detail_movie' movie.pk %}">
-      <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
-    </a>
-  {% endfor %} -->
+  <!-- 최신영화 -->
+  <section>
+    <div class="caroussel">
+      <p class="controls">
+        <span class="prev">
+          <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+          </svg>
+        </span>
+      </p>
+      
+      <div class="slide_wrap">
+        <ul class="slides">
+          {% for movie in recent_movies %}
+              <li>
+                <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
+                  <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
+                </a>
+              </li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+      <p class="controls">
+        <span class="next">
+          <svg xmlns="http://www.w3.org/2000/svg" width="84px" height="84px" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+          </svg>
+        </span>
+      </p>
+    </div>
+  </section>
 
-  <!-- {% for movie in action_movies %}
-    <a href="{% url 'movies:detail_movie' movie.pk %}">
-      <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
-    </a>
-    <br>
-  {% endfor %} -->
 
 <script>
   let slides = document.querySelector('.slides');
@@ -46,13 +50,13 @@
   slides.style.width = (slideWidth + slideMargin) * slideCount - slideMargin + 'px';
   
   function moveSlide(num) {
-    slides.style.left = -num * 200 + 'px';
+    slides.style.left = -num * 200 +  'px';
     currentIdx = num;
   }
 
   nextBtn.addEventListener('click', function() {
     // slide count에서 몇개를 보여줄지를 기준으로 빼줘야한다.
-    if(currentIdx < slideCount - 3){
+    if(currentIdx < slideCount - 6){
       moveSlide(currentIdx + 1);
     } else {
       moveSlide(0);
@@ -62,8 +66,11 @@
     if(currentIdx > 0){
       moveSlide(currentIdx - 1);
     } else {
-      moveSlide(slideCount-3);
+      moveSlide(slideCount-6);
     }
   });
+
 </script>
+<!-- 추가 구현사항
+로맨스 / 액션 등을 버튼으로 누름으로 비동기적으로 캐러셀 변화 -->
 {% endblock %}

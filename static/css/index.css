@@ -1,3 +1,10 @@
+section {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+}
+
 li {
   list-style: none;
 }
@@ -10,11 +17,19 @@ li {
   overflow: hidden;
 }
 
+h1 {
+  position: absolute;
+  margin-top: 400px;
+  margin-left: 100px;
+  color: #11f3a2;
+  font-size: 40px;
+}
+
 .slides {
   position: absolute;
   left:0; top:0;
-  /* 3150px */
   transition: left 1s ease-out;
+  padding: 0;
 }
 
 .slides li:not(:last-child) {
@@ -22,13 +37,38 @@ li {
   margin-right: 0px;
 }
 
+.slides img:hover {
+  opacity: 0.4;
+}
+
 .controls{
   text-align:center;
-  margin-top: 50px;
 }
 .controls span {
-  background:#333;
-  color:#fff;
+  color: #333;
   padding: 10px 20px;
   margin:0 10px;
+}
+.controls span:hover {
+  color:#11f3a2;
+}
+
+.caroussel {
+  width: 1500px;
+  display: flex;
+  align-items: center;
+}
+
+.arrow-btn {
+  width: 84px;
+  height: 84px;
+}
+.carousel-inner {
+  height: 800px;
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: 8%;
+  object-fit: cover;
 }
