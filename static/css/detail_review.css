@@ -157,3 +157,19 @@ body {
   width: 15%;
 }
 
+.modal-content {
+  background-color: #0D0C0C;
+  border: solid 1px #11f3a2;
+  border-radius: 10px;
+  color: white;
+}
+
+.btn-close {
+  color: white;
+  background-color: white;
+}
+
+.modal-body {
+  display: flex;
+  justify-content: space-between;
+}

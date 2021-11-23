@@ -21,7 +21,9 @@
     <form action="{% url 'accounts:change_personal_info' user.pk %}" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <label for="formFile" class="form-label">프로필 이미지 업로드</label>
-      <input class="form-control" type="file" name="image" accept="image/*" id="formFile">
+      <div class="upload">
+        <input class="form-control" type="file" name="image" accept="image/*" id="formFile">
+      </div>
 
       {% for user_change in user_change_form %}
         <div class="input_area">
