@@ -45,8 +45,12 @@
 
 /* ------나의 관심영화------ */
 .my_like {
+  display: none;
+}
+.my_like.active {
+  display: grid;
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 22%;
 }
 .my_like h2 {
@@ -55,31 +59,53 @@
 
 /* 그리드 박스 */
 .my_like_box {
+  margin-top: 30px;
   display: grid;
-  background-color: green;
-  grid-template-columns: 210 210 210 210;
-  grid-template-rows: 300 300 300 300;
-  grid-gap: 10px;
-  margin-top: 80px;
-  padding: 10px;
-  width: 1800px;
+  grid-template-columns: auto auto auto auto;
+  align-content: center;
+  grid-gap: 80px;
+  width: 1700px;
 }
 
-.my_like_box > div {
-  background-color: #11f3a2;
+.my_like_box .box{
+  width: 250px;
+  height: 357px;
+  overflow: hidden;
+}
+.my_like_box .box a{
+  width: 250px;
+  height: 357px;
+  padding: 0;
+  overflow: hidden;
+}
+.my_like_box .box a img {
   color: white;
   text-align: center;
-  padding: 20px 0;
+  /* margin: 30px 70px; */
+  width: 250px;
+  height: 357px;
+  transition: all .5s ease;
+  opacity: 0.8;
 }
+.my_like_box .box a:hover img {
+  transform: scale(1.2) ;
+  opacity: 1;
+}
+
 
 
 /* ------내가 쓴 리뷰------ */
 .my_review {
-  position: absolute;
-  top: 25%;
-  left: 22%;
+  display: none;
 }
-.my_review h2 {
+.my_review.active {
+  display: grid;
+  position: absolute;
+  top: 20%;
+  left: 22%;
+} 
+
+.my_review h2 { 
   color:white;
 }
 .my_review_box {
@@ -91,8 +117,12 @@
 
 /* ------추천 인생영화------ */
 .recommended {
+  display: none;
+}
+.recommended.active {
+  display: grid;
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 22%;
 }
 .recommended h2 {
