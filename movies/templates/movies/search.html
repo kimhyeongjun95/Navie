@@ -17,8 +17,10 @@
 
   {% comment %} 장르 검색 리스트 {% endcomment %}
   <div>
-    {% for movie in genres.movies.all %}
-      장르 : {{ movie.title }}
+    {% for genre in genres %}
+      {% for movie in genre.movies.all %}
+        장르 : {{ movie.title }}
+      {% endfor %}
     {% endfor %}
   </div>
   
@@ -34,7 +36,7 @@
   {% comment %} 감독 검색 리스트 {% endcomment %}
   <div>
     {% for director in directors %}
-      {% for movie in diretor.movies.all %}
+      {% for movie in director.movies.all %}
         감독 : {{ movie.title}}
       {% endfor %}
     {% endfor %}
