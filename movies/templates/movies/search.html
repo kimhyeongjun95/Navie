@@ -1,52 +1,97 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<link rel="stylesheet" href="/static/css/search.css">
+
+<h1>검색 결과</h1>
+
+<div class="all">
+
   {% comment %} 영화 검색 리스트 {% endcomment %}
-  <div>
-    {% for movie in movies%}
-      영화 : {{ movie.title }}
-    {% endfor %}
+  <div class="grid">
+    <h3>영화 관련 검색 결과</h3>
+    <div class="square">
+      {% for movie in movies%}
+        <div>
+          <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
+            {{ movie.title }}
+          </a>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 
   {% comment %} 리뷰 검색 리스트 {% endcomment %}
-  <div>
-    {% for review in reviews %}
-      리뷰 : {{ review.title }}
-    {% endfor %}
+  <div class="grid">
+    <h3>리뷰 관련 검색 결과</h3>
+    <div class="square">
+      {% for review in reviews %}
+        <div>
+          <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
+            {{ review.title }}
+          </a>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 
   {% comment %} 장르 검색 리스트 {% endcomment %}
-  <div>
-    {% for movie in genres.movies.all %}
-      장르 : {{ movie.title }}
-    {% endfor %}
+  <div class="grid">
+    <h3>장르 관련 검색 결과</h3>
+    <div class="square">
+      {% for genre in genres %}
+        {% for movie in genre.movies.all %}
+          <div>
+            <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
+              {{ movie.title }}
+            </a>
+          </div>
+        {% endfor %}
+      {% endfor %}
+    </div>
   </div>
   
   {% comment %} 배우 검색 리스트 {% endcomment %}
-  <div>
-    {% for actor in actors %}
-      {% for movie in actor.movies.all%}
-        배우 : {{ movie.title }}
+  <div class="grid">
+    <h3>배우 관련 검색결과</h3>
+    <div class="square">
+      <p></p>
+      {% for actor in actors %}
+        {% for movie in actor.movies.all%}
+          <div>
+            <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
+              {{ movie.title }}
+            </a>
+          </div>
+        {% endfor %}
       {% endfor %}
-    {% endfor %}
+    </div>
   </div>
 
   {% comment %} 감독 검색 리스트 {% endcomment %}
-  <div>
-    {% for director in directors %}
-      {% for movie in diretor.movies.all %}
-        감독 : {{ movie.title}}
+  <div class="grid">
+    <h3>감독 관련 검색 결과</h3>
+    <div class="square">
+      {% for director in directors %}
+        {% for movie in director.movies.all %}
+          감독 : {{ movie.title }}
+        {% endfor %}
       {% endfor %}
-    {% endfor %}
+    </div>
   </div>
 
   {% comment %} 키워드 검색 리스트 {% endcomment %}
-  <div>
-    {% for keyword in keywords %}
-      {% for movie in keyword.movies.all %}
-        키워드 : {{ movie.title }}
+  <div class="grid">
+  <h3>키워드 관련 검색 결과</h3>
+    <div class="square">
+      {% for keyword in keywords %}
+        {% for movie in keyword.movies.all %}
+          키워드 : {{ movie.title }}
+        {% endfor %}
       {% endfor %}
-    {% endfor %}
+    </div>
   </div>
+
+</div>
 
 {% endblock %}

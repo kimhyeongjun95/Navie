@@ -9,6 +9,7 @@
   </div>
   
   <h1>당신의 인생 영화를 찾아드립니다</h1>
+  
 
   <section>
     <!-- 최신영화 -->
@@ -29,7 +30,7 @@
           {% for movie in recent_movies %}
           <li>
                 <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
-                  <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
+                  <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" loading="lazy" width="200" height="310" alt="movie-poster">
                 </a>
               </li>
               {% endfor %}
@@ -66,7 +67,7 @@
             {% for movie in action_movies %}
             <li>
               <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
-                <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
+                <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" loading="lazy" width="200" height="310" alt="movie-poster">
               </a>
             </li>
             {% endfor %}
@@ -103,7 +104,7 @@
             {% for movie in romance_movies %}
             <li>
               <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
-                <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
+                <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" loading="lazy" width="200" height="310" alt="movie-poster">
               </a>
             </li>
             {% endfor %}
@@ -139,7 +140,7 @@
             {% for movie in crime_movies %}
             <li>
               <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
-                <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
+                <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" loading="lazy" width="200" height="310" alt="movie-poster">
               </a>
             </li>
             {% endfor %}
@@ -175,7 +176,7 @@
             {% for movie in horror_movies %}
             <li>
               <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
-                <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
+                <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" loading="lazy" width="200" height="310" alt="movie-poster">
               </a>
             </li>
             {% endfor %}
@@ -211,7 +212,7 @@
             {% for movie in comedy_movies %}
             <li>
               <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
-                <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="200" height="310" alt="movie-poster">
+                <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" loading="lazy" width="200" height="310" alt="movie-poster">
               </a>
             </li>
             {% endfor %}
