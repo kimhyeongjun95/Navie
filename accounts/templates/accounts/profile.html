@@ -40,7 +40,16 @@
     <h2>내가 쓴 리뷰</h2>
     <div class="my_review_box">
       {% for review in person.review_set.all %}
-        {{ review }}
+        <div class="box">
+          <a href="">
+            {{ review }}
+          </a>
+            {{ review.movie }}
+        </div>
+        <div class="contentbox">
+          {{ review.updated_at|date:'Y/m/d' }}
+        </div>
+        <hr>
 
       {% endfor %}
     </div>
@@ -52,7 +61,11 @@
     <h2>추천 인생영화</h2>
     <div class="recommended_box">
       {% for movie in person.recommend_movies.all %}
-        {{ movie }}
+        <div class="box">
+          <a href="{% url 'movies:detail_movie' movie.pk %}">
+            <img src="https://image.tmdb.org/t/p/original{{ movie.poster_path }}"alt="">
+          </a>
+        </div>
 
       {% endfor %}
     </div>

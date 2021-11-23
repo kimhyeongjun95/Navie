@@ -87,3 +87,11 @@ h3 {
   margin-left: 150px;
   color: #11f3a2;
 }
+
+body {
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
