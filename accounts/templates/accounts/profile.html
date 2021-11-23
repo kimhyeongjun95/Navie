@@ -15,35 +15,34 @@
 
   <!-- 프로필 메뉴 -->
   <ul class="profile_menu">
-    <li>나의 관심영화</li>
-    <li>내가 쓴 리뷰</li>
-    <li>추천 인생영화</li>
+    <li id="button1">나의 관심영화</li>
+    <li id="button2">내가 쓴 리뷰</li>
+    <li id="button3">추천 인생영화</li>
   </ul>
 
   <!-- 나의 관심영화 -->
-  <div class="my_like">
+  <div class="my_like active">
     <h2>나의 관심영화</h2>
     <div class="my_like_box">
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-      <div>5</div>
-      <div>6</div>
-      <div>7</div>
-      <div>8</div>
+      {% for movie in person.like_movies.all %}
+      <div class="box">
+        <a href="{% url 'movies:detail_movie' movie.pk %}">
+          <img src="https://image.tmdb.org/t/p/original{{ movie.poster_path }}"alt="">
+        </a>
+      </div>
+      {% endfor %}
       <!-- 만약 4개이상이라면 넘어가기? -->
     </div>
   </div>
 
   <!-- 내가 쓴 리뷰 -->
-  <div class="my_review">
+ <div class="my_review">
     <h2>내가 쓴 리뷰</h2>
     <div class="my_review_box">
-      <!-- <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div> -->
+      {% for review in person.review_set.all %}
+        {{ review }}
+
+      {% endfor %}
     </div>
   </div>
 
@@ -52,10 +51,13 @@
   <div class="recommended">
     <h2>추천 인생영화</h2>
     <div class="recommended_box">
-      <!-- <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div> -->
+      {% for movie in person.recommend_movies.all %}
+        {{ movie }}
+
+      {% endfor %}
     </div>
   </div>
 {% endblock %}
+{% block script %}
+<script src="/static/js/profile.js" defer></script>
+{% endblock script %}
