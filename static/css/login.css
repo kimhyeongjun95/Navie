@@ -34,22 +34,32 @@ section {
     background-image: none !important;
     color: -internal-light-dark(black, white) !important; */
 }
-/* .login_area input:-webkit-autofill {
-  -webkit-box-shaodw: 0 0 0 1000px black inset;
-} */
 
- .login_area label {
-   position: absolute;
-   left: 10px; top: 15px;
-   font-size: 18px;
-   color: #999;
-   transition: all .5s ease;
- }
- .login_area input:focus + label,
- .login_area input:valid + label {
-   top: -3px; 
-   font-size: 13; color: #11f3a2;
- }
+.login_area label {
+  position: absolute;
+  left: 10px; top: 15px;
+  font-size: 18px;
+  color: #999;
+  transition: all .5s ease;
+}
+.login_area input:focus + label,
+.login_area input:valid + label {
+  top: -3px; 
+  font-size: 13; color: #11f3a2;
+}
+
+/* .login_area label.warning {
+  color: red !important;
+  animation: warning .3s ease;
+  animation-iteration-count: 3;
+}
+@keyframes warning {
+  0% {transform: translateX(-8px);}
+  25% {transform: translateX(-8px);}
+  50% {transform: translateX(-8px);}
+  75% {transform: translateX(-8px);}
+}
+ */
 
 .login_btn {
   margin-top: 30px;
