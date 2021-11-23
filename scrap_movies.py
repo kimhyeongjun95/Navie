@@ -16,7 +16,7 @@ def scrap_genre_list():
 
 def scrap_credit_list(movie_id):
     #movie/무비 id
-    credit_list_res = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=3a5be8d94b0edc5a4cd336281a27127e&language=ko-KR').json()
+    credit_list_res = requests.get(f'https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=3a5be8d94b0edc5a4cd336281a27127e&language=en-US').json()
     return credit_list_res
 
 
@@ -28,7 +28,7 @@ def scrap_keyword_list(movie_id):
 
 def scrap_movie_list():
     #list/리스트 id
-    for i in range(1, 21):
+    for i in range(1, 5):
         movie_list_res = requests.get(f'https://api.themoviedb.org/3/movie/popular?api_key=3a5be8d94b0edc5a4cd336281a27127e&language=ko-KR&page={i}').json()
         try:
             movie_list_res['results']
@@ -58,6 +58,10 @@ def scrap_movie_list():
                     except:
                         continue
                     try:
+                        movie.vote_average = m['vote_average']
+                    except:
+                        continue
+                    try:
                         movie.backdrop_path = m['backdrop_path']
                     except:
                         pass
@@ -78,13 +82,27 @@ def scrap_movie_list():
                                     Actor.objects.create(id_code=credit['id'], name=credit['name'])
                                     actor = get_object_or_404(Actor, id_code=credit['id'])
                                     movie.actors.add(actor)
-                            elif credit['known_for_department'] == 'Directing':
+                            if credit['known_for_department'] == 'Directing':
                                 if Director.objects.filter(id_code=credit['id']).exists():
                                     director = get_object_or_404(Director, id_code=credit['id'])
+                                    print(director, 'already')
                                     movie.directors.add(director)
                                 else:
                                     Director.objects.create(id_code=credit['id'], name=credit['name'])
                                     director = get_object_or_404(Director, id_code=credit['id'])
+                                    print(director, 'created')
+                                    movie.directors.add(director)
+
+                        for credit in credit_list['crew']:
+                            if credit['known_for_department'] == 'Directing':
+                                if Director.objects.filter(id_code=credit['id']).exists():
+                                    director = get_object_or_404(Director, id_code=credit['id'])
+                                    print(director, 'already')
+                                    movie.directors.add(director)
+                                else:
+                                    Director.objects.create(id_code=credit['id'], name=credit['name'])
+                                    director = get_object_or_404(Director, id_code=credit['id'])
+                                    print(director, 'created')
                                     movie.directors.add(director)
                     
                     keyword_list = scrap_keyword_list(movie.id_code)

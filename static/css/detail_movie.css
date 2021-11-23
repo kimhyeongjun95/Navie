@@ -1,0 +1,148 @@
+body {
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.movie-all {
+  width: 90%;
+  height: 85%;
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+  border: solid 1px #11f3a2;
+  border-radius: 5px;
+  padding: 1%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie-container {
+  display: grid;
+  width: 75%;
+  grid-template-rows: 25% 25% 8% 5% 5% 5% 27%;
+  grid-template-columns: 40% 40% 5% 15%;
+  grid-template-areas: 'movie-poster movie-video movie-video movie-video'
+                       'movie-poster movie-video movie-video movie-video'
+                       'movie-poster movie-title . movie-like'
+                       'movie-poster movie-directors . .'
+                       'movie-poster movie-actors . movie-avg-rate'
+                       'movie-poster movie-release_date . movie-tmdb-rate'
+                       'movie-poster movie-plot movie-plot movie-plot'
+}
+
+.movie-poster {
+  grid-area: movie-poster;
+}
+
+.movie-video {
+  grid-area: movie-video;
+  padding: 2%;
+}
+
+.movie-title {
+  grid-area: movie-title;
+  font-size: 1.4rem;
+  padding: 3%;
+  color: #11f3a2;
+}
+
+.movie-directors {
+  grid-area: movie-directors;
+  color: #bebebe;
+  padding: 3%;
+}
+
+.movie-actors {
+  grid-area: movie-actors;
+  color: #bebebe;
+  padding: 3%;
+}
+
+.movie-release_date {
+  grid-area: movie-release_date;
+  color: #bebebe;
+  padding: 3%;
+}
+
+.movie-avg-rate {
+  grid-area: movie-avg-rate;
+  color: #bebebe;
+  padding: 3%;
+}
+
+.movie-tmdb-rate {
+  grid-area: movie-tmdb-rate;
+  color: #bebebe;
+  padding: 3%;
+}
+
+.movie-like {
+  grid-area: movie-like;
+  padding: 5%;
+}
+
+.movie-plot {
+  grid-area: movie-plot;
+  color: #bebebe;
+  padding: 2%;
+  overflow: auto;
+}
+
+.movie-reviews {
+  width: 23%;
+  border-left: solid 1px #11f3a2;
+  overflow: auto;
+}
+
+.review-create-button {
+  width: 105%;
+  margin: 0px;
+  text-align: center;
+}
+
+.inner-review-btn {
+  background: #049662;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 0.3%;
+  width: 30%;
+}
+
+.review-list {
+  padding: 5%;
+}
+
+#move:hover {
+  color: #11f3a2;
+  cursor: pointer;
+  transition: 0.2s;
+  transform: translateY(-2px);
+  opacity: 0.5;
+}
+
+#tmp:hover {
+  color: #11f3a2;
+}
+
+.mini-review-title {
+  color: #bebebe;
+  font-size: 1.2rem;
+}
+
+.mini-review-title:hover {
+  color: #11f3a2;
+}
+
+.mini-review-bottom {
+  color: #767676;
+  font-size: 0.8rem;
+}
+
+.mini-review-bottom:hover {
+  color: #767676;
+}

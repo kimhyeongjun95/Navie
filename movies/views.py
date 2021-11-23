@@ -88,10 +88,14 @@ def detail_movie(request, movie_pk):
     else:
         movie_avg_rate = 0
 
+    movie_directors = movie.directors.all()[:1]
+    movie_actors = movie.actors.all()[:3]
     context = {
         'movie': movie,
         'youtube_key': youtube_key,
         'movie_avg_rate': movie_avg_rate,
+        'movie_directors': movie_directors,
+        'movie_actors' : movie_actors,
     }
     return render(request, 'movies/detail_movie.html', context)
 
@@ -121,14 +125,14 @@ def recommend_movies(request):
 
 
 def movies_worldcup(request):
-    action = Movie.objects.filter(genres=1).order_by('-release_date')[:25]
-    romance = Movie.objects.filter(genres=14).order_by('-release_date')[:25]
-    crime = Movie.objects.filter(genres=5).order_by('-release_date')[:25]
-    horror = Movie.objects.filter(genres=11).order_by('-release_date')[:25]
-    comedy = Movie.objects.filter(genres=4).order_by('-release_date')[:25]
-    sf = Movie.objects.filter(genres=15).order_by('-release_date')[:25]
-    family = Movie.objects.filter(genres=8).order_by('-release_date')[:25]
-    music = Movie.objects.filter(genres=12).order_by('-release_date')[:25]
+    action = Movie.objects.filter(genres=1).order_by('-vote_average', '-release_date')[:40]
+    romance = Movie.objects.filter(genres=14).order_by('-vote_average', '-release_date')[:40]
+    crime = Movie.objects.filter(genres=5).order_by('-vote_average', '-release_date')[:40]
+    horror = Movie.objects.filter(genres=11).order_by('-vote_average', '-release_date')[:40]
+    comedy = Movie.objects.filter(genres=4).order_by('-vote_average', '-release_date')[:40]
+    sf = Movie.objects.filter(genres=15).order_by('-vote_average', '-release_date')[:40]
+    family = Movie.objects.filter(genres=8).order_by('-vote_average', '-release_date')[:40]
+    music = Movie.objects.filter(genres=12).order_by('-vote_average', '-release_date')[:40]
     
     # 8개 장르 영화 중복없이 넣기
     random_movies = []
@@ -208,15 +212,15 @@ def result_recommend(request, movie1_pk, movie2_pk):
                 genre1 = g1
                 genre2 = g2
     
-    genre1_movie1 = random.choice(genre1.movies.all())
+    genre1_movie1 = random.choice(genre1.movies.order_by('-vote_average')[:40])
     while True:
-        genre1_movie2 = random.choice(genre1.movies.all())
+        genre1_movie2 = random.choice(genre1.movies.order_by('-vote_average')[:40])
         if genre1_movie1.pk != genre1_movie2.pk:
             break
     
-    genre2_movie3 = random.choice(genre2.movies.all())
+    genre2_movie3 = random.choice(genre2.movies.order_by('vote_average')[:40])
     while True:
-        genre2_movie4 = random.choice(genre2.movies.all())
+        genre2_movie4 = random.choice(genre2.movies.order_by('vote_average')[:40])
         if genre2_movie3.pk != genre2_movie4.pk:
             break
 

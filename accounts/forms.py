@@ -71,6 +71,7 @@ class SearchIdForm(forms.Form):
             'class': 'find_id_name',
         })
     )
+    
     email_id = forms.CharField(
         label='이메일',
         widget=forms.TextInput(attrs={

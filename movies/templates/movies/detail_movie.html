@@ -1,50 +1,118 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<link rel="stylesheet" href="/static/css/detail.css">
+   <link rel="stylesheet" href="/static/css/detail_movie.css">
 
-   {% comment %} 유튜브 예고편 {% endcomment %}
-   <iframe
-      width="560"
-      height="315"
-      src="https://www.youtube.com/embed/{{ youtube_key }}?rel=0&amp;autoplay=1&mute=1"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    >
-    </iframe>
+   <div class="movie-all">
+      <div class="movie-container">
+         {% comment %} 영화 포스터 {% endcomment %}
+         <div class="movie-poster">
+            <img src="https://image.tmdb.org/t/p/original{{movie.poster_path}}" width="100%" height="100%" alt="movie-poster">
+         </div>
 
-   {% comment %} 평점 {% endcomment %}
-   {{ movie_avg_rate }} / 10
-   {% comment %} 관심있는 영화 {% endcomment %}
-   <form data-movie-id="{{ movie.pk }}" class="like-movie-form" method="POST">
-      {% csrf_token %}
-      {% if request.user in movie.like_users.all %}
-         <button id="likeBtn-{{ movie.pk }}" class="btn btn-link text-danger">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-               <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-            </svg>
-         </button>
-      {% else %}
-         <button id="likeBtn-{{ movie.pk }}" class="btn btn-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-               <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-            </svg>
-         </button>
-      {% endif %}
-   </form>
+         {% comment %} 유튜브 예고편 {% endcomment %}
+         <div class="movie-video">
+            <iframe
+               width="100%"
+               height="100%"
+               src="https://www.youtube.com/embed/{{ youtube_key }}?rel=0&amp;autoplay=1&mute=1"
+               title="YouTube video player"
+               frameborder="0"
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+               allowfullscreen
+            >
+            </iframe>
+         </div>
 
-   {% comment %} 리뷰 작성 {% endcomment %}
-   <a href="{% url 'reviews:create_review' movie.pk %}">리뷰 작성</a>
-   
-   {% comment %} 해당 영화 리뷰 {% endcomment %}
-   <div>
-      {% for review in movie.review_set.all %}
-         <a href="{% url 'reviews:detail_review' review.pk %}">{{ review.title }}</a>
-      {% endfor %}
+         {% comment %} 영화제목 {% endcomment %}
+         <div class="movie-title">
+            {{ movie.title }}
+         </div>
+
+         {% comment %} 영화감독 {% endcomment %}
+         <div class="movie-directors">
+            {% for director in movie_directors %}
+               감독 | {{ director }}
+            {% endfor %}
+         </div>
+
+         {% comment %} 영화배우 {% endcomment %}
+         <div class="movie-actors">
+            배우
+            {% for actor in movie_actors %}
+               | {{ actor }}
+            {% endfor %}
+         </div>
+
+         {% comment %} 개봉일자 {% endcomment %}
+         <div class="movie-release_date">
+            {{ movie.release_date }}
+         </div>
+
+         {% comment %} 사용자 평점 {% endcomment %}
+         <div class="movie-avg-rate">
+            Navie | {{ movie_avg_rate }} / 10
+         </div>
+
+         {% comment %} TMDB 평점 {% endcomment %}
+         <div class="movie-tmdb-rate">
+            TMDB | {{ movie.vote_average }} / 10.0
+         </div>
+
+         {% comment %} 관심있는 영화 {% endcomment %}
+         <form data-movie-id="{{ movie.pk }}" class="like-movie-form movie-like" method="POST">
+            {% csrf_token %}
+            {% if request.user in movie.like_users.all %}
+               <button id="likeBtn-{{ movie.pk }}" class="btn btn-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#11f3a2" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                     <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                  </svg>
+               </button>
+            {% else %}
+               <button id="likeBtn-{{ movie.pk }}" class="btn btn-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#11f3a2" class="bi bi-heart" viewBox="0 0 16 16">
+                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                  </svg>
+               </button>
+            {% endif %}
+         </form>
+
+         {% comment %} 영화 줄거리 {% endcomment %}
+         <div class="movie-plot">
+            {{ movie.plot }}
+         </div>
+
+      </div>
+
+
+      <div class="movie-reviews">
+         {% comment %} 리뷰 작성 {% endcomment %}
+         <div class="review-create-button">
+            <a href="{% url 'reviews:create_review' movie.pk %}">
+               <button class="inner-review-btn">리뷰 작성</button>
+            </a>
+         </div>
+         
+         {% comment %} 해당 영화 리뷰 {% endcomment %}
+         <div class="review-list">
+            {% for review in movie.review_set.all %}
+               <div id="move">
+                  <a id="tmp" href="{% url 'reviews:detail_review' review.pk %}">
+                     <div class="mini-review-title">
+                        제목: {{ review.title }}
+                     </div>
+                     <div class="mini-review-bottom">
+                        {{ review.user }} - {{ review.updated_at|date:'Y/m/d'}}
+                     </div>
+                  </a>
+               </div>
+            {% endfor %}
+         </div>
+      </div>
    </div>
+
 {% endblock %}
+
 
 {% block script %}
 <script src="/static/js/detail.js" defer></script>
