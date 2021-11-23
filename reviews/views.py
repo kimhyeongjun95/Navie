@@ -31,12 +31,14 @@ def create_review(request, movie_pk):
 @require_safe
 def detail_review(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
+    review_rate = int(review.rate)
     comment_form = CommentForm()
     comments = review.comment_set.all()
     context = {
         'review': review,
         'comment_form': comment_form,
         'comments': comments,
+        'review_rate': review_rate,
     }
     return render(request, 'reviews/detail_review.html', context)
 

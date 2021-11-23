@@ -41,7 +41,7 @@ class ReviewForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
     content = forms.CharField(
-        label='댓글',
+        label='',
         min_length=1,
         widget=forms.TextInput(attrs={
             'class': 'review-comment input_area',
