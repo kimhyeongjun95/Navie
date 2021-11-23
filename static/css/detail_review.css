@@ -32,7 +32,6 @@ body {
                        'review-content review-content review-content review-content'
                        '. . update-btn delete-btn';
 
-  border: solid 1px white;
   padding: 1%;
 }
 
@@ -125,7 +124,35 @@ body {
   width: 23%;
   overflow: auto;
   color: #bebebe;
-  border: solid 1px white;
+  border-left: solid 1px #11f3a2;
+  border-radius: 5px;
   padding: 1%;
 }
 
+.review-comment {
+  background-color: #0D0C0C;
+  border: solid 1px grey;
+  color: white;
+  padding: 1.5%;
+  width: 82%;
+}
+
+.comment-create-btn {
+  background: #049662;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 0.3%;
+  width: 15%;
+  margin-left: 1.5%;
+}
+
+.comment-delete-btn {
+  background: #ff1a0e;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 0.3%;
+  margin-left: 1.5%;
+  width: 15%;
+}

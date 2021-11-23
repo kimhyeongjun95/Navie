@@ -137,9 +137,13 @@ def change_personal_info(request, user_pk):
     if request.method == 'POST':
         user_change_form = UserInfoChangeForm(request.POST, request.FILES, instance=user)
         if user_change_form.is_valid():
-            user.image = request.FILES['image']
-            user_change_form.save()
-            return redirect('accounts:profile', user.username)
+            try:
+                user.image = request.FILES['image']
+                user_change_form.save()
+                return redirect('accounts:profile', user.username)
+            except:
+                user_change_form.save()
+                return redirect('accounts:profile', user.username)
     else:
         user_change_form = UserInfoChangeForm(instance=user)
     context = {
