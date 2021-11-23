@@ -66,7 +66,6 @@
   grid-gap: 80px;
   width: 1700px;
 }
-
 .my_like_box .box{
   width: 250px;
   height: 357px;
@@ -93,7 +92,6 @@
 }
 
 
-
 /* ------내가 쓴 리뷰------ */
 .my_review {
   display: none;
@@ -104,15 +102,47 @@
   top: 20%;
   left: 22%;
 } 
-
 .my_review h2 { 
   color:white;
 }
+
+/* 리뷰 박스 */
 .my_review_box {
   padding: 0;
-}
-.my_review_box > div {
+  margin-top: 30px;
   color: white;
+
+  display:flex;
+  flex-direction: column;
+}
+.my_review_box .box {
+  color: white;
+  display: flex;
+  width: 1400px;
+  overflow: hidden;
+  font-size: 20px;
+  /* box-shadow: 0 4px 8px 0 rgba(26, 190, 62, 0.2), 0 6px 20px 0 rgba(114, 47, 168, 0.19); */
+  display:flex;
+  justify-content: end;
+}
+.my_review_box .box a {
+  color:white;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  font-size: 27px;
+}
+.my_review_box .box a:hover {
+  color:#11f3a2;
+}
+.my_review_box .contentbox {
+  color:#767676;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+hr {
+  margin: 8px 0px 8px 0px;
 }
 
 /* ------추천 인생영화------ */
@@ -128,9 +158,44 @@
 .recommended h2 {
   color:white;
 }
+/* 그리드 박스 */
 .recommended_box {
-  padding: 0;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  align-content: center;
+  grid-gap: 80px;
+  width: 1700px;
 }
-.recommended_box > div {
+.recommended_box .box {
+  width: 250px;
+  height: 357px;
+  overflow: hidden;
+}
+.recommended_box .box a {
+  width: 250px;
+  height: 357px;
+  padding: 0;
+  overflow: hidden;
+}
+.recommended_box .box a img {
   color: white;
+  text-align: center;
+  /* margin: 30px 70px; */
+  width: 250px;
+  height: 357px;
+  transition: all .5s ease;
+  opacity: 0.8;
+}
+.recommended_box .box a:hover img {
+  transform: scale(1.2) ;
+  opacity: 1;
+}
+
+body {
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
