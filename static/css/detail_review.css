@@ -1,0 +1,131 @@
+body {
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.review-all {
+  width: 90%;
+  height: 80%;
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+  border: solid 1px #11f3a2;
+  border-radius: 5px;
+  padding: 1%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-detail-container {
+  width: 75%;
+  display: grid;
+  /* row-gap: 1%; */
+  grid-template-rows: 10% 8% 10% 64% 8%;
+  grid-template-columns: 23% 49% 14% 14%;
+  grid-template-areas: 'review-movie review-movie review-movie review-movie'
+                       'review-user . review-rate review-update_at'
+                       'review-title review-title review-title review-title'
+                       'review-content review-content review-content review-content'
+                       '. . update-btn delete-btn';
+
+  border: solid 1px white;
+  padding: 1%;
+}
+
+.review-movie {
+  grid-area: review-movie;
+  color: #bebebe;
+  font-weight: bold;
+  font-size: 1.4rem;
+  border-bottom: solid 1px #11f3a2;
+  padding: 1%;
+}
+
+#move:hover {
+  color: #11f3a2;
+}
+
+.review-title {
+  grid-area: review-title;
+  color: #bebebe;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 0.8%;
+}
+
+.review-user {
+  grid-area: review-user;
+  color: #bebebe;
+  padding: 4%;
+  font-size: 1.1rem;
+}
+
+.review-update_at {
+  grid-area: review-update_at;
+  color: #bebebe;
+  padding: 1%;
+  padding: 7%;
+  font-size: 1.1rem;
+  text-align: end;
+}
+
+.review-content {
+  grid-area: review-content;
+  overflow: auto;
+  color: #bebebe;
+  border: solid 1px #11f3a2;
+  padding: 1%;
+  font-size: 1.2rem;
+}
+
+.review-rate {
+  grid-area: review-rate;
+  color: #bebebe;
+  padding: 1%;
+  padding: 7%;
+  font-size: 1.1rem;
+  text-align: end;
+}
+
+.update-btn {
+  grid-area: update-btn;
+  padding: 6%;
+  text-align: end;
+}
+
+.inner-update-btn {
+  background: #049662;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 0.3%;
+  width: 80%;
+}
+
+.delete-btn {
+  grid-area: delete-btn;
+  padding: 6%;
+  text-align: center;
+}
+
+.inner-delete-btn {
+  background: #ff1a0e;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 0.3%;
+  width: 80%;
+}
+
+.comment-list {
+  width: 23%;
+  overflow: auto;
+  color: #bebebe;
+  border: solid 1px white;
+  padding: 1%;
+}
+

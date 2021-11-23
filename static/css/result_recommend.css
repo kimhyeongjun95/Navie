@@ -19,8 +19,6 @@ body {
   top: 40%;
   left: 50%;
   transform:translate(-50%, -50%);
-  /* display: flex;
-  justify-content: space-evenly; */
 }
 
 .winner-title {
@@ -37,8 +35,6 @@ body {
   left: 50%;
   transform:translate(-50%, -50%);
   text-align: center;
-  /* display: flex;
-  justify-content: center; */
 }
 
 img:hover {

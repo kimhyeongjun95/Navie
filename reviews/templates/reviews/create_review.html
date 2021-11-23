@@ -3,6 +3,12 @@
 {% block content %}
   <link rel="stylesheet" href="/static/css/create_review.css">
 
+  <a href="{% url 'movies:detail_movie' movie.pk %}" class="review-close-btn" style="padding: 0;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#049662" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+    </svg>
+  </a>
+
   <div class="review-container">
     <form class="review-form" action="{% url 'reviews:create_review' movie.pk %}" method="POST">
       {% csrf_token %}
@@ -17,9 +23,10 @@
           / 10
         </span>
       </div>
-      <button class="review-create-btn">작성</button>
+      <button type="submit" class="review-create-btn">작성</button>
     </form>
   </div>
+
 {% endblock %}
 
 {% block script %}

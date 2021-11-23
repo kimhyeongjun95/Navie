@@ -1,3 +1,11 @@
+body {
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 .review-update-container {
   width: 65%;
   height: 80%;
@@ -47,6 +55,7 @@
   border-right: solid 1px #0D0C0C;
   border-bottom: solid 1px #11f3a2;
   padding: 1%;
+  overflow: auto;
 }
 
 .rate-update-label {
@@ -80,4 +89,11 @@
   border-radius: 25px;
   color: white;
   padding: 0.3%;
+}
+
+.update-close-btn {
+  position: absolute;
+  top: 12%;
+  left: 16%;
+  transform:translate(-50%, -50%);
 }
