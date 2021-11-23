@@ -89,7 +89,6 @@ nav {
 .navbar_dropdown_content {
   display: none;
 }
-
 .navbar_dropdown_content.active {
   display: inline-block;
   position: absolute;
