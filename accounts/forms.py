@@ -17,6 +17,7 @@ class SignUpForm(UserCreationForm):
         widget=forms.TextInput(attrs={
             'class': 'accounts-name input_area',
             'autofocus': True,
+            'autocomplete': 'off',
             })
     )
 
@@ -29,6 +30,7 @@ class SignUpForm(UserCreationForm):
         widget=forms.TextInput(attrs={
             'class': 'accounts-id input_area',
             'autofocus': False,
+            'autocomplete': 'off',
             })
     )
 
@@ -56,6 +58,7 @@ class SignUpForm(UserCreationForm):
         help_text=_(''),
         widget=forms.TextInput(attrs={
             'class': 'accounts-email input_area',
+            'autocomplete': 'off',
             })
     )
 
@@ -69,6 +72,7 @@ class SearchIdForm(forms.Form):
         label='이름',
         widget=forms.TextInput(attrs={
             'class': 'find_id_name',
+            'autocomplete': 'off',
         })
     )
     
@@ -76,6 +80,7 @@ class SearchIdForm(forms.Form):
         label='이메일',
         widget=forms.TextInput(attrs={
             'class': 'find_id_email',
+            'autocomplete': 'off',
         })
     )
 
@@ -84,6 +89,7 @@ class SearchPasswordForm(forms.Form):
         label='아이디',
         widget=forms.TextInput(attrs={
             'class': 'accounts-search_password-id',
+            'autocomplete': 'off',
         })
     )
 
@@ -91,6 +97,7 @@ class SearchPasswordForm(forms.Form):
         label='이름',
         widget=forms.TextInput(attrs={
             'class': 'accounts-search_password-name',
+            'autocomplete': 'off',
         })
     )
 
@@ -98,6 +105,7 @@ class SearchPasswordForm(forms.Form):
         label='이메일',
         widget=forms.TextInput(attrs={
             'class': 'accounts-search_password-email',
+            'autocomplete': 'off',
         })
     )
 
@@ -110,6 +118,7 @@ class UserInfoChangeForm(UserChangeForm):
         required=True,
         widget=forms.TextInput(attrs={
             'class': 'accounts-change_name input_area',
+            'autocomplete': 'off',
             })
     )
 
@@ -119,6 +128,7 @@ class UserInfoChangeForm(UserChangeForm):
         help_text=_(''),
         widget=forms.TextInput(attrs={
             'class': 'accounts-change-email input_area',
+            'autocomplete': 'off',
             })
     )
 
