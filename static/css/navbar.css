@@ -102,9 +102,15 @@ nav {
   background-color: transparent;
   list-style:none;
 }
-
-.navbar_dropdown_content .navbar_dropdown_content_element:hover {
+/* 프로필 호버링 */
+.navbar_dropdown_content .navbar_dropdown_content_element .navbar_myprofile:hover {
   background-color: #303255;
+  border-radius: 5px 5px 0 0;
+}
+/* 로그아웃 호버링 */
+.navbar_dropdown_content .navbar_dropdown_content_element .navbar_logout:hover {
+  background-color: #303255;
+  border-radius: 0 0 5px 5px;
 }
 
 .navbar_dropdown_content .navbar_logout,
