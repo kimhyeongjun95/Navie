@@ -71,16 +71,13 @@ def search_info(request):
         except:
             print(search.get('username_password'))
             print(search.get('name_password'))
-            print(search.get('email_password'))
             try:
                 users3 = get_user_model().objects.filter(username=search.get('username_password'))
                 users4 = get_user_model().objects.filter(name=search.get('name_password'))
-                users5 = get_user_model().objects.filter(email=search.get('email_password'))
                 for user3 in users3:
                     for user4 in users4:
-                        for user5 in users5:
-                            if user3.pk == user4.pk == user5.pk:
-                                return redirect('accounts:search_change_password', user3.pk)
+                        if user3.pk == user4.pk:
+                            return redirect('/accounts/password/reset/')
                 else:
                     return redirect('accounts:search_info')
             except:
@@ -102,24 +99,6 @@ def searched_id(request, user_pk):
         'user': user,
     }
     return render(request, 'accounts/searched_id.html', context)
-
-
-@require_http_methods(['GET', 'POST'])
-def search_change_password(request, user_pk):
-    user = get_object_or_404(get_user_model(), pk=user_pk)
-    if request.method == 'POST':
-        password_change_form = SetPasswordForm(user, request.POST)
-        if password_change_form.is_valid():
-            password_change_form.save()
-            return redirect('accounts:login')
-    else:
-        password_change_form = SetPasswordForm(user)
-    context = {
-        'user': user,
-        'password_change_form':password_change_form,
-    }
-    return render(request, 'accounts/search_change_password.html', context)
-
 
 @require_safe
 def profile(request, user_username):
