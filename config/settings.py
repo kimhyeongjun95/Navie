@@ -35,16 +35,22 @@ INSTALLED_APPS = [
     'accounts',
     'reviews',
     'movies',
+
     # 라이브러리
     'django_extensions',
     'imagekit',
+    'allauth',
+    'allauth.account',
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -140,3 +146,19 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.User'
+
+
+# 비밀번호 찾기
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_PORT = '587'
+
+EMAIL_HOST_USER = 'ssafy0211@gmail.com'
+
+EMAIL_HOST_PASSWORD = 'dlshr267!'
+
+EMAIL_USE_TLS = True
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

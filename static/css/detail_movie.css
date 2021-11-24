@@ -31,7 +31,7 @@ body {
                        'movie-poster movie-directors . .'
                        'movie-poster movie-actors . movie-avg-rate'
                        'movie-poster movie-release_date . movie-tmdb-rate'
-                       'movie-poster movie-plot movie-plot movie-plot'
+                       'movie-poster movie-plot movie-plot movie-plot';
 }
 
 .movie-poster {

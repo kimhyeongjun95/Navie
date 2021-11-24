@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-# from django.contrib.auth import password_validation
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.contrib.auth import get_user_model
@@ -40,7 +39,6 @@ class SignUpForm(UserCreationForm):
             'class': 'accounts-password input_area',
             }),
         error_messages={'invalid': _("최소 8자 이상의 문자와 숫자로 이루어진 비밀번호를 입력해주세요.")},
-        # help_text=password_validation.password_validators_help_text_html()
     )
 
     password2 = forms.CharField(
@@ -97,14 +95,6 @@ class SearchPasswordForm(forms.Form):
         label='이름',
         widget=forms.TextInput(attrs={
             'class': 'accounts-search_password-name',
-            'autocomplete': 'off',
-        })
-    )
-
-    email_password = forms.CharField(
-        label='이메일',
-        widget=forms.TextInput(attrs={
-            'class': 'accounts-search_password-email',
             'autocomplete': 'off',
         })
     )
