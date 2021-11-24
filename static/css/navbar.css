@@ -1,4 +1,7 @@
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+.html {
+  height: 10px;
+}
 body {
   margin: 0;
   padding: 0;
@@ -13,13 +16,27 @@ a {
 }
 
 nav {
+  position: fixed;
+  width: 100%;
+  top:0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  height: 75px;
+  z-index: 1;
+  background-color:rgba(0, 0, 0, 0.38);
 }
 
+
+
 .navbar_home a {
+  color: #11f3a2;
+  font-size: 24px;
+  margin-left: 14px;
+}
+.navbar_home a img {
   color: #11f3a2;
   font-size: 24px;
   margin-left: 14px;
@@ -33,13 +50,22 @@ nav {
 } */
 
 /* 검색창 */
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 305px;
+}
+
 .navbar_search {
   border-color: white;
   border: 1px solid white;
   border-radius: 6px;
-  width: 240px;
+  width: 260px;
+  height: 36px;
+  font-size:20px;
 
-  background-color: #0D0C0C;
+  background-color: transparent;
   color: white;
   text-align: center;
   
@@ -48,8 +74,9 @@ nav {
 /* 돋보기 버튼 */
 .navbar_searchbutton {
   color: white;
-  background-color: #0D0C0C;
+  background-color: transparent;
   border: none;
+
 }
 
 /* 인생영화 */
@@ -89,7 +116,6 @@ nav {
 .navbar_dropdown_content {
   display: none;
 }
-
 .navbar_dropdown_content.active {
   display: inline-block;
   position: absolute;

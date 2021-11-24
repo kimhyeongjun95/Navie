@@ -55,7 +55,6 @@
   <div class="grid">
     <h3>배우 관련 검색결과</h3>
     <div class="square">
-      <p></p>
       {% for actor in actors %}
         {% for movie in actor.movies.all%}
           <div>
@@ -74,7 +73,11 @@
     <div class="square">
       {% for director in directors %}
         {% for movie in director.movies.all %}
-          감독 : {{ movie.title }}
+          <div>
+            <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
+              {{ movie.title }}
+            </a>
+          </div>
         {% endfor %}
       {% endfor %}
     </div>
@@ -86,7 +89,11 @@
     <div class="square">
       {% for keyword in keywords %}
         {% for movie in keyword.movies.all %}
-          키워드 : {{ movie.title }}
+          <div>
+            <a href="{% url 'movies:detail_movie' movie.pk %}" style="padding: 0px;">
+              {{ movie.title }}
+            </a>
+          </div>
         {% endfor %}
       {% endfor %}
     </div>

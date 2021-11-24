@@ -45,7 +45,8 @@ class CommentForm(forms.ModelForm):
         min_length=1,
         widget=forms.TextInput(attrs={
             'class': 'review-comment input_area',
-            'placeholder': '200자 이하의 댓글을 입력해주세요.'
+            'placeholder': '200자 이하의 댓글을 입력해주세요.',
+            'autocomplete': 'off',
             })
     )
 
