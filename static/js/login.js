@@ -1,17 +1,18 @@
-// let id = $('.id');
-// let pw = $('.pw');
-// let btn = $('.btn')
-// console.log(id, pw, btn)
-// $(btn).on('click', function() {
-//   if($(id).val() == '') {
-//     $(id).next('label').addClass('warning');
-//     setTimeout(function() {
-//       $('label').removeClass('warning');
-//     }, 1500)
-//   } else if ($(pw).val() =='') {
-//     $(pw).next('label').addClass('warning');
-//     setTimeout(function() {
-//       $('label').removeClass('warning');
-//     }, 1500)
-//   }
-// });
+let input1 = document.querySelector('.id');
+let input2 = document.querySelector('.pw');
+let btn = document.querySelector('.btn');
+
+input1.addEventListener('keyup', function() {
+  if (input1.value == '' || input2.value == '') {
+    btn.style.backgroundColor = '#999';
+  } else {
+    btn.style.backgroundColor = '#11f3a2';
+  }
+});
+input2.addEventListener('keyup', function() {
+  if (input1.value == '' || input2.value == '') {
+    btn.style.backgroundColor = '#999';
+  } else {
+    btn.style.backgroundColor = '#11f3a2';
+  }
+});

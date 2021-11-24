@@ -5,7 +5,7 @@ h1 {
 }
 h3 {
   color: white;
-  font-size: 30px;
+  font-size: 34px;
   text-align: center;
   margin-bottom: 30px;
 }
@@ -14,7 +14,7 @@ h3 {
   margin-top: 70px;
   position:absolute;
   top: 50%;
-  left: 50%;
+  left: 55%;
   transform:translate(-50%, -50%);
   display:grid;
   grid-template-columns: 350px 350px 350px;
@@ -39,11 +39,14 @@ h3 {
   color: white;
   overflow: scroll;
   text-align: center;
-  padding-top: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .square a {
   color: white;
-  font-size: 15px;
+  font-size: 18px;
 }
 .square a:hover {
   color: #11f3a2;

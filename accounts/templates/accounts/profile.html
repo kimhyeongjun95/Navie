@@ -41,7 +41,7 @@
     <div class="my_review_box">
       {% for review in person.review_set.all %}
         <div class="box">
-          <a href="">
+          <a href="{% url 'reviews:detail_review' review.pk %}">
             {{ review }}
           </a>
             {{ review.movie }}

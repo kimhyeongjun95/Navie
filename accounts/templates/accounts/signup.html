@@ -18,20 +18,19 @@
         {% endfor %}
         
         <div class="signup_btn">
-          <button>회원가입</button>
+          <button class="btn">회원가입</button>
         </div>
       </div> 
     </section>
   </form>
 
-<script>
-  {% comment %} let deleter = document.querySelector('.accounts-id')
-  console.log(deleter)
-  deleter.removeAttribute('autofocus'); {% endcomment %}
-</script>
+
 {% comment %} 
 추가 구현사항
 1. 아이디 비밀번호 입력 안되어있으면 회원가입 버튼 회색, 입력해서 valid면 초록색으로 변환
 2. 잘못된 정보 입력하면 아이디 비밀번호 label 빨간색으로 변함.
 {% endcomment %}
 {% endblock %}
+{% block script %}
+<script src="/static/js/signup.js" defer></script>
+{% endblock script %}
