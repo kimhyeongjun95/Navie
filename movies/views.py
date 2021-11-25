@@ -32,7 +32,6 @@ def index(request):
 @require_safe
 def search(request):
     word = request.GET.get('word')
-    print(word, '결과')
     movies = Movie.objects.filter(Q(title__icontains=word) | Q(plot__icontains=word))
     reviews = Review.objects.filter(Q(title__icontains=word) | Q(content__icontains=word))
     genres = Genre.objects.filter(Q(name__icontains=word))
@@ -134,7 +133,6 @@ def movies_worldcup(request):
     
     # 8개 장르 영화 중복없이 넣기
     random_movies = []
-    print(random_movies)
     # 액션 영화
     action_movie = random.choice(action)
     random_movies.append([action_movie.pk, action_movie.poster_path, action_movie.title])
@@ -191,7 +189,6 @@ def movies_worldcup(request):
     context = {
         'random_movies': random_movies,
     }
-    print(context)
     return JsonResponse(context, safe=False)
 
 
@@ -204,11 +201,15 @@ def result_recommend(request, movie1_pk, movie2_pk):
     genres1 = movie1.genres.all()
     genres2 = movie2.genres.all()
 
+    flag = True
     for g1 in genres1:
         for g2 in genres2:
             if g1.pk != g2.pk:
                 genre1 = g1
                 genre2 = g2
+                break
+        if flag:
+            break
     
     genre1_movie1 = random.choice(genre1.movies.order_by('-vote_average')[:30])
     while True:
@@ -221,7 +222,7 @@ def result_recommend(request, movie1_pk, movie2_pk):
         genre2_movie4 = random.choice(genre2.movies.order_by('vote_average')[:30])
         if genre2_movie3.pk != genre2_movie4.pk:
             break
-
+    
     request.user.recommend_movies.add(genre1_movie1)
     request.user.recommend_movies.add(genre1_movie2)
     request.user.recommend_movies.add(genre2_movie3)
