@@ -56,10 +56,14 @@ def search_info(request):
         search = request.POST
         try:
             print(search)
+            u1 = get_user_model().objects.get(name=search.get('name_id'))
+            print(u1)
+            u2 = get_user_model().objects.get(email=search.get('email_id'))
+            print(u2)
             users1 = get_user_model().objects.filter(name=search.get('name_id'))
             users2 = get_user_model().objects.filter(email=search.get('email_id'))
-            print(users1)
-            print(users2)
+            print(users1, '1')
+            print(users2, '2')
             for user1 in users1:
                 print(user1)
                 for user2 in users2:
@@ -72,8 +76,8 @@ def search_info(request):
             try:
                 users3 = get_user_model().objects.filter(username=search.get('username_password'))
                 users4 = get_user_model().objects.filter(name=search.get('name_password'))
-                print(users3)
-                print(users4)
+                print(users3, '3')
+                print(users4, '4')
                 for user3 in users3:
                     for user4 in users4:
                         if user3.pk == user4.pk:
