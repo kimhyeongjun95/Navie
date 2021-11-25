@@ -54,9 +54,6 @@ def search_info(request):
     
     if request.method == 'POST':
         search = request.POST
-        print(search)
-        print(search.get('name_id'))
-        print(search.get('email_id'))
         try:
             u1 = get_object_or_404(get_user_model(), name=search.get('name_id'))
             u2 = get_object_or_404(get_user_model(), email=search.get('email_id'))
@@ -69,8 +66,6 @@ def search_info(request):
             else:
                 return redirect('accounts:search_info')
         except:
-            print(search.get('username_password'))
-            print(search.get('name_password'))
             try:
                 users3 = get_user_model().objects.filter(username=search.get('username_password'))
                 users4 = get_user_model().objects.filter(name=search.get('name_password'))
@@ -99,6 +94,7 @@ def searched_id(request, user_pk):
         'user': user,
     }
     return render(request, 'accounts/searched_id.html', context)
+
 
 @require_safe
 def profile(request, user_username):

@@ -85,24 +85,20 @@ def scrap_movie_list():
                             if credit['known_for_department'] == 'Directing':
                                 if Director.objects.filter(id_code=credit['id']).exists():
                                     director = get_object_or_404(Director, id_code=credit['id'])
-                                    print(director, 'already')
                                     movie.directors.add(director)
                                 else:
                                     Director.objects.create(id_code=credit['id'], name=credit['name'])
                                     director = get_object_or_404(Director, id_code=credit['id'])
-                                    print(director, 'created')
                                     movie.directors.add(director)
 
                         for credit in credit_list['crew']:
                             if credit['known_for_department'] == 'Directing':
                                 if Director.objects.filter(id_code=credit['id']).exists():
                                     director = get_object_or_404(Director, id_code=credit['id'])
-                                    print(director, 'already')
                                     movie.directors.add(director)
                                 else:
                                     Director.objects.create(id_code=credit['id'], name=credit['name'])
                                     director = get_object_or_404(Director, id_code=credit['id'])
-                                    print(director, 'created')
                                     movie.directors.add(director)
                     
                     keyword_list = scrap_keyword_list(movie.id_code)
