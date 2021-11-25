@@ -114,7 +114,7 @@ def scrap_movie_list():
         except:
             pass
 
-        
+
 
 # scrap_genre_list()
 scrap_movie_list()
