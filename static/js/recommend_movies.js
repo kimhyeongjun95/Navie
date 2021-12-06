@@ -9,10 +9,16 @@ let randomMovies = []
 function firstSelect () {
   console.log(1)
   console.log(randomMovies)
-  if (randomMovies.length === 4) {
+  if (randomMovies.length === 5) {
     tournament.innerText = '4강'
     console.log(randomMovies.length)
   }
+
+  if (randomMovies.length === 3) {
+    tournament.innerText = '결승'
+    console.log(randomMovies.length)
+  }
+
   if (randomMovies.length === 2) {
     console.log('한번 더?')
     console.log(randomMovies)
@@ -28,10 +34,16 @@ function firstSelect () {
 function secondSelect() {
   console.log(2)
   console.log(randomMovies)
-  if (randomMovies.length === 4) {
+  if (randomMovies.length === 5) {
+    console.log(randomMovies.length)
     tournament.innerText = '4강'
+  }
+
+  if (randomMovies.length === 3) {
+    tournament.innerText = '결승'
     console.log(randomMovies.length)
   }
+  
   if (randomMovies.length === 2) {
     console.log('한번 더?')
     console.log(randomMovies)
