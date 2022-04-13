@@ -2,6 +2,8 @@
 
 >당신의 인생영화를 찾아드리겠습니다. 우리는 'Navie' 입니다.
 
+- 삼성청년SW아카데미 1학기 프로젝트 우수상 수상 프로젝트
+
 <br>
 
 ##  📌 목차
@@ -40,6 +42,7 @@
     <td align="center"><a href="https://github.com/kimhyeongjun95"><img src="https://avatars.githubusercontent.com/u/86656921?v=4" width="200px;" alt=""/><br /><sub><b>HYEONGJUN</b></sub></a><br /></td>
   </tr>
 </table>
+
 
 <br>
 
