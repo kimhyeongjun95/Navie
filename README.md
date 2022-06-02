@@ -84,7 +84,7 @@
 <br>
 
 ### Ui Design
-
+> [Figma 보러가기](https://www.figma.com/file/4VNlwvJ6dhp65LQc1FPBxd/Navie?node-id=0%3A1)
 - **기존 영화 사이트들의 UI를 참고**하였습니다.
 - **Figma의 Community**에 있는 **여러 템플릿을 재가공하여 제작**하였습니다.
 
